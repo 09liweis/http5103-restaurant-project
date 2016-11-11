@@ -1,7 +1,7 @@
 # http5103-restaurant-project
 This repository it for HTTP5103 restaurant project
 
-Sam: I am going to set up the basic layout for header and footer
+Sam: I am going to set up the basic layout for header, footer and the whole website.
 
 Page Assignment
 Home Page: Ivan
