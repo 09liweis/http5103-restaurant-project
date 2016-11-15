@@ -1,0 +1,160 @@
+/* Border box property */
+/* ------------------- */
+html {
+	box-sizing: border-box;
+}
+
+*, *:before, *:after {
+	box-sizing: inherit;
+}
+
+
+/* HTML Elements */
+/* ------------- */
+.hidden {
+    position: absolute;
+    left: -10000px;
+}
+
+#contact-us main, #contact-us aside {
+    color: #000000;
+    margin-top: 1em;
+    padding: 1em 1em;
+}
+
+#main {
+    display: inline-block;
+    margin-right: -4px;
+    width: 65%;
+}
+
+#additional-info {
+    float: right;
+    width: 35%;
+}
+
+h2 {
+    font-size: 2em;
+}
+
+
+/* Contact form */
+/* ------------ */
+#main p {
+    font-style: italic;
+    color: #23272c;
+    margin-top: 1em;
+    font-size: 1.25em;
+}
+
+form {
+    margin: 1em 0;
+}
+
+form > div {
+    margin: 1em 0;
+}
+
+label {
+    font-size: 1.25em;
+    color: #23272c;
+}
+
+.field-required, #validation-error {
+    color: crimson;
+}
+
+input, textarea, select {
+    border: 1px solid #23272c;
+    font-size: 1em;
+    width: 60%;
+    padding: 0.75em 0.75em;
+    border-radius: 5px;
+}
+
+textarea {
+    width: 75%;
+    font-size: 1.3em;
+}
+
+.validation-error, #validation-error {
+    color: orangered;
+    display: none;
+}
+
+button {
+    border: none;
+    font-weight: bold;
+    padding: 10px 10px;
+    text-align: center;
+    font-size: 1.5em;
+    cursor: pointer;
+    border-radius: 5px;
+    text-decoration: none;
+    background-color: #23272c;
+    color: white;
+    box-shadow: 3px 3px 6px 0 rgba(0,0,0,0.3);
+}
+
+#submit-success {
+    color: forestgreen;
+    font-size: 1.25em;
+    font-weight: bold;
+    display: none;
+}
+
+
+/* Sidebar */
+/* ------- */
+#additional-info section {
+    margin-bottom: 1em;
+    padding: 0.5em 0.5em;
+    background-color: #21b0d1;
+    color: white;
+    border: 1px solid #23272c;
+    opacity: 0.9;
+}
+
+h3 {
+    text-align: center;
+    font-size: 1.5em;
+    padding: 0.5em 0;
+    border-bottom: 4px double white;
+    margin-bottom: 0.5em;
+}
+
+#opening-hours table {
+    margin: 0 auto;
+}
+
+tr td:first-child {
+    padding-right: 1em;
+}
+
+tr td:last-child {
+    text-align: right;
+}
+
+#review-text {
+    background-color: white;
+    color: #23272c;
+    font-style: italic;
+    padding: 0.5em 0.5em;
+    border-radius: 5px;
+    margin-bottom: 4px;
+}
+
+#review-sender {
+    padding: 0 0.5em;
+    border-bottom: 1px solid azure;
+    font-weight: bold;
+}
+
+#sender-name {
+    color: #23272c;
+    font-style: italic;
+}
+
+#footer {
+    clear: both;
+}

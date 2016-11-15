@@ -1,1 +1,96 @@
-contact us
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Restaurant - Locations</title>
+        <link rel="stylesheet" href="css/common.css">
+        <!-- Replace with your css for the page -->
+        <link rel="stylesheet" href="css/contact-us.css"> 
+    </head>
+    <body id="contact-us">
+        <header id="header">
+        </header>
+        <div class="wrapper">
+            <main id="main">
+                <h2>Contact Us</h2>
+                <p>Send us an email using the form below.</p>
+                <form id="contact-form" name="contact_form" action="#" method="post">
+                    <div>
+                        <div><label for="name">Your Name<span class="field-required">&nbsp;*</span></label></div>
+                        <div><input type="text" id="name" name="sender_name" placeholder="Enter your name here ..." /></div>
+                        <div id="no-name" class="validation-error">Please enter a name.</div>
+                    </div>
+                    <div>
+                        <div><label for="email">Email Address<span class="field-required">&nbsp;*</span></label></div>
+                        <div><input type="text" id="email" name="sender_email" placeholder="Enter your email here ..." /></div>
+                        <div id="no-email" class="validation-error">Please enter an email address.</div>
+                    </div>
+                    <div>
+                        <div><label for="phone">Phone Number</label></div>
+                        <div><input type="text" id="phone" name="sender_phone" placeholder="123 685 7780" /></div>
+                        <div id="wrong-phone" class="validation-error">Please enter a valid phone number.</div>
+                    </div>
+                    <div>
+                        <div><label for="location">Location this pertains to</label></div>
+                        <div>
+                            <select id="location" name="resto_location">
+                                <option value="no-resto">-- Choose location --</option>
+                                <option value="resto01">Location 01</option>
+                                <option value="resto02">Location 02</option>
+                                <option value="resto03">Location 03</option>
+                                <option value="resto04">Location 04</option>
+                                <option value="resto05">Location 05</option>
+                                <option value="resto06">Location 06</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div>
+                        <div><label for="subject">Subject<span class="field-required">&nbsp;*</span></label></div>
+                        <div><input type="text" id="subject" name="message_subject" placeholder="Enter your subject here ..." /></div>
+                        <div id="no-subject" class="validation-error">Please enter a subject.</div>
+                    </div>
+                    <div>
+                        <div><label for="message">Your Message<span class="field-required">&nbsp;*</span></label></div>
+                        <div><textarea id="message" name="sender_message" placeholder="Enter your message here ..." rows="5"></textarea></div>
+                        <div id="no-msg" class="validation-error">Please enter a message.</div>
+                    </div>
+                    <div><button type="submit" name="send-message">Send Message</button></div>
+                </form>
+                <div id="validation-error">Unable to submit your message due to some validation errors. <br /> Please review and submit again.</div>
+                <div id="submit-success"></div>
+            </main>
+            <aside id="additional-info">
+                <h2 class="hidden">Sidebar informations</h2>
+                <section id="opening-hours">
+                    <h3>Business Hours</h3>
+                    <table>
+                        <thead class="hidden">
+                            <tr><th>Days</th><th>Hours</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Monday</td><td>9:00 AM - 11:00 PM</td></tr>
+                            <tr><td>Tuesday</td><td>9:00 AM - 11:00 PM</td></tr>
+                            <tr><td>Wednesday</td><td>9:00 AM - 11:00 PM</td></tr>
+                            <tr><td>Thursday</td><td>9:00 AM - 11:00 PM</td></tr>
+                            <tr><td>Friday</td><td>9:00 AM - 11:00 PM</td></tr>
+                            <tr><td>Saturday</td><td>9:00 AM - 11:00 PM</td></tr>
+                            <tr><td>Sunday</td><td>10:00 AM - 10:00 PM</td></tr>
+                        </tbody>
+                    </table>
+                </section>
+                <section id="reviews">
+                    <h3>Top 10 Reviews</h3>
+                    <div>
+                        <p id="review-text">Here are our top 10 latest reviews ...</p>
+                        <div id="review-sender">From <span id="sender-name">John Doe</span></div>
+                    </div>
+                </section>
+            </aside>
+        </div>
+        <footer id="footer">
+        </footer>
+        <script src="js/common.js"></script>
+        <!-- Replace with your js for the page -->
+        <script src="js/contact-us.js"></script>
+    </body>
+</html>
