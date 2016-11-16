@@ -2,3 +2,15 @@
     width: 100%;
     height: 600px;
 }
+
+.res-popup {
+    width: 200px;
+}
+
+.res-image img {
+    width: 100%;
+}
+
+.res-info {
+    color: #21b0d1;
+}
