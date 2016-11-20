@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Courgette|Economica');
+
 * {
     box-sizing: border-box;
     -webkit-box-sizing: border-box;
@@ -22,8 +24,18 @@ ul {
 }
 
 body {
+    font-family: "Economica";
     color: #ffffff;
     background: linear-gradient(to bottom, #f2f2f2 0%, #fafafa 50px)
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: "Courgette";
 }
 
 .wrapper {
