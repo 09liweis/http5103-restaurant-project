@@ -16,6 +16,7 @@
     padding: 10px 12px;
     border: 1px solid rgba(128, 128, 128, 0.4);
     border-radius: 3px;
+    width: 80%;
 }
 
 .button {
@@ -24,3 +25,35 @@
     color: #ffffff;
 }
 
+#events-booking h1 {
+    text-align: center;
+    margin: 20px 0;
+}
+
+#eventform .col {
+    width: 20%;
+}
+
+#eventform textarea {
+    height: 250px;
+}
+
+#eventform .button {
+    width: 100px;
+}
+
+.event.col {
+    width: 24%;
+    background: #ffffff;
+    margin-bottom: 20px;
+    margin-right: 10px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0 1px 2px 0;
+}
+
+.event-image img {
+    width: 100%;
+}
+
+.event-info {
+    padding: 10px;
+}

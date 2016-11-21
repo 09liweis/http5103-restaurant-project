@@ -1,3 +1,9 @@
+var fontAwesome = document.createElement('link');
+    fontAwesome.id = 'font-awesome';
+    fontAwesome.rel = 'stylesheet';
+    fontAwesome.href = 'https://use.fontawesome.com/1cf4c770b3.css';
+    document.head.appendChild(fontAwesome);
+
 var navs = [
     {
         link: '/',
@@ -54,15 +60,15 @@ var header = document.getElementById('header');
 header.innerHTML = '<div id="heading">' +
                         '<div class="wrapper">' +
                             '<div class="col" id="contact">' +
-                                '<p id="address">205 Humber College Blvd, Etobicoke, ON M9W 5L7</p>' +
-                                '<p id="phone">(111)111-111</p>' +
+                                '<p id="address"><i class="fa fa-map-marker"></i>205 Humber College Blvd, Etobicoke, ON M9W 5L7</p>' +
+                                '<p id="phone"><i class="fa fa-phone"></i>(111)111-111</p>' +
                             '</div>' +
                             '<div class="col" id="logo">' +
                                 '<h1>Restaurant</h1>' +
                             '</div>' +
                             '<div class="col" id="socials">' +
                                 '<ul>' +
-                                    '<li>facebook</li>' +
+                                    '<li><i class="fa fa-facebook"></i></li>' +
                                     '<li>facebook</li>' +
                                     '<li>facebook</li>' +
                                     '<li>facebook</li>' +
