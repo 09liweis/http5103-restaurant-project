@@ -57,35 +57,23 @@ for (var i = 0; i < navs.length; i++) {
 }
 
 var header = document.getElementById('header');
-header.innerHTML = '<div id="heading">' +
-                        '<div class="wrapper">' +
-                            '<div class="col" id="contact">' +
-                                '<p id="address"><i class="fa fa-map-marker"></i>205 Humber College Blvd, Etobicoke, ON M9W 5L7</p>' +
-                                '<p id="phone"><i class="fa fa-phone"></i>(111)111-111</p>' +
-                            '</div>' +
-                            '<div class="col" id="logo">' +
-                                '<h1>Restaurant</h1>' +
-                            '</div>' +
-                            '<div class="col" id="socials">' +
-                                '<ul>' +
-                                    '<li><i class="fa fa-facebook"></i></li>' +
-                                    '<li>facebook</li>' +
-                                    '<li>facebook</li>' +
-                                    '<li>facebook</li>' +
-                                '</ul>' +
-                            '</div>' +
-                            '<div class="clear"></div>' +
+header.innerHTML = '<div class="wrapper">' +
+                        '<div class="col" id="logo">' +
+                            '<h2 id="logo-text">Restaurant</h2>' +
                         '</div>' +
-                    '</div>' +
-                    '<nav id="nav">' +
-                        '<div class="wrapper">' +
+                        '<nav class="col" id="nav">' +
                             '<ul>' +
                             navigations +
                             '</ul>' +
-                        '</div>' +
-                    '</nav>';
+                        '</nav>' +
+                        '<div class="clear"></div>' +
+                    '</div>';
 
 var footer = document.getElementById('footer');
 footer.innerHTML = '<div class="wrapper">' +
+                            '<div class="" id="contact">' +
+                                '<p id="address"><i class="fa fa-map-marker"></i>205 Humber College Blvd, Etobicoke, ON M9W 5L7</p>' +
+                                '<p id="phone"><i class="fa fa-phone"></i>(111)111-111</p>' +
+                            '</div>' +
                         '<p>Copyright &copy; 2016 Restaurant</p>';
                     '</div>';

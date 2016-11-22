@@ -11,20 +11,6 @@
     margin-bottom: 4px;
 }
 
-.form-input {
-    background: #ffffff;
-    padding: 10px 12px;
-    border: 1px solid rgba(128, 128, 128, 0.4);
-    border-radius: 3px;
-    width: 80%;
-}
-
-.button {
-    font-size: 18px;
-    background: #21b0d1;
-    color: #ffffff;
-}
-
 #events-booking h1 {
     text-align: center;
     margin: 20px 0;
