@@ -5,7 +5,7 @@ var restaurants = [
         lat: 43.567,
         lng: -79.4567,
         address: 'somewhere',
-        photo: 'http://preview.byaviators.com/theme/superlist/wp-content/uploads/2015/10/tHTHup3YTN6XsLwf43vY_IMG_8003-300x300.jpg',
+        photo: 'http://preview.byaviators.com/theme/superlist/wp-content/uploads/2015/10/photo-1433155805822-ffc337821a5b-600x400.jpeg',
         cost: '$$',
         rating: 8
     },
@@ -14,7 +14,7 @@ var restaurants = [
         lat: 43.667,
         lng: -79.2567,
         address: 'somewhere',
-        photo: 'http://preview.byaviators.com/theme/superlist/wp-content/uploads/2015/10/tHTHup3YTN6XsLwf43vY_IMG_8003-300x300.jpg',
+        photo: 'http://preview.byaviators.com/theme/superlist/wp-content/uploads/2015/10/photo-1433155805822-ffc337821a5b-600x400.jpeg',
         cost: '$$',
         rating: 8
     },
@@ -23,7 +23,7 @@ var restaurants = [
         lat: 43.167,
         lng: -79.8567,
         address: 'somewhere',
-        photo: 'http://preview.byaviators.com/theme/superlist/wp-content/uploads/2015/10/tHTHup3YTN6XsLwf43vY_IMG_8003-300x300.jpg',
+        photo: 'http://preview.byaviators.com/theme/superlist/wp-content/uploads/2015/10/photo-1433155805822-ffc337821a5b-600x400.jpeg',
         cost: '$$',
         rating: 8
     },
@@ -32,7 +32,7 @@ var restaurants = [
         lat: 43.567,
         lng: -79.3567,
         address: 'somewhere',
-        photo: 'http://preview.byaviators.com/theme/superlist/wp-content/uploads/2015/10/tHTHup3YTN6XsLwf43vY_IMG_8003-300x300.jpg',
+        photo: 'http://preview.byaviators.com/theme/superlist/wp-content/uploads/2015/10/photo-1433155805822-ffc337821a5b-600x400.jpeg',
         cost: '$$',
         rating: 8
     },
@@ -41,7 +41,7 @@ var restaurants = [
         lat: 43.067,
         lng: -79.567,
         address: 'somewhere',
-        photo: 'http://preview.byaviators.com/theme/superlist/wp-content/uploads/2015/10/tHTHup3YTN6XsLwf43vY_IMG_8003-300x300.jpg',
+        photo: 'http://preview.byaviators.com/theme/superlist/wp-content/uploads/2015/10/photo-1433155805822-ffc337821a5b-600x400.jpeg',
         cost: '$$',
         rating: 8
     },
@@ -50,11 +50,14 @@ var restaurants = [
         lat: 43.367,
         lng: -79.2567,
         address: 'somewhere',
-        photo: 'http://preview.byaviators.com/theme/superlist/wp-content/uploads/2015/10/tHTHup3YTN6XsLwf43vY_IMG_8003-300x300.jpg',
+        photo: 'http://preview.byaviators.com/theme/superlist/wp-content/uploads/2015/10/photo-1433155805822-ffc337821a5b-600x400.jpeg',
         cost: '$$',
         rating: 8
     },
 ];
+
+var list = document.getElementById('list');
+
 var college = {lat: 43.7283324, lng: -79.6079205}
 var markers = [];
 var infos = [];
@@ -94,9 +97,37 @@ function initMap() {
     })
 }
 
+renderRestaurants(restaurants);
+
 function closeOtherInfos() {
     var numInfos = infos.length;
     for (var i = 0; i < numInfos; i++) {
         infos[i].close();
     }
+}
+
+function renderRestaurants(restaurants, options) {
+    var reshtml = '';
+    restaurants.map(function(r) {
+        reshtml += renderRes(r);
+    });
+    list.innerHTML = '';
+    list.innerHTML = reshtml;
+}
+
+function renderRes(res) {
+    return '<div class="restaurant">'+
+                '<div class="res-image col">' +
+                    '<img src="' + res.photo + '" />' +
+                '</div>' +
+                '<div class="res-title col">' +
+                    '<h3>' + res.name + '</h3>' +
+                '</div>' +
+                '<div class="res-info col">' +
+                    '<p>Rating: ' + res.rating + '</p>' +
+                    '<p>Cost: ' + res.cost + '</p>' +
+                    '<p>Address: ' + res.address + '</p>' +
+                '</div>' +
+                '<div class="clear"></div>' +
+            '</div>'
 }

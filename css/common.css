@@ -1,3 +1,11 @@
+@import url('https://fonts.googleapis.com/css?family=Courgette|Economica');
+
+* {
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+}
+
 body,
 h1,
 h2,
@@ -16,7 +24,22 @@ ul {
 }
 
 body {
-    color: #ffffff;
+    font-family: "Economica";
+    color: #666;
+    background: linear-gradient(to bottom, #f2f2f2 0%, #fafafa 50px)
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: "Courgette";
+}
+
+a:hover {
+    color: #ffb606;
 }
 
 .wrapper {
@@ -32,27 +55,51 @@ body {
     float: left;
 }
 
-#heading,
-#footer{
-    background: #21b0d1;
-    padding: 20px 0;
+.fa {
+    margin-right: 5px;
+    color: #ffb606;
 }
 
-#header .col {
-    width: 33.3333%;
+.form-input {
+    background: #ffffff;
+    padding: 10px 12px;
+    border: 1px solid rgba(128, 128, 128, 0.4);
+    border-radius: 3px;
+    width: 80%;
+}
+
+.button {
+    background: #ffb606;
+    color: #2a2a2a;
+    cursor: pointer;
+    transition: all 0.5s;
+    font-size: 1.25rem;
+}
+
+.button:hover {
+    background: #2a2a2a;
+    color: #ffffff;
+}
+
+#header {
+    background: rgba(0,0,0,0.46);
+    padding: 20px 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
 }
 
 #logo {
-    text-align: center;
+    width: 20%;
 }
 
-#socials {
-    text-align: right;
+#logo-text {
+    margin: 0;
+    color: #ffffff;
 }
 
 #nav {
-    background: #23272c;
-    text-align: center;
+    width: 80%;
 }
 
 #nav .nav {
@@ -60,9 +107,40 @@ body {
     margin: 10px 10px;
 }
 
-#nav .nav-link {
+.nav-link {
     color: #ffffff;
-    text-transform: Capitalize;
+    text-transform: uppercase;
     font-weight: bold;
     text-decoration: none;
+    position: relative;
+    transition: color 0.5s
+}
+
+.nav-link:hover {
+    color: #ffb606;
+}
+
+.nav-link:before {
+    content: '';
+    position: absolute;
+    width: 0px;
+    bottom: -8px;
+    height: 3px;
+    background: #ffb606;
+    transition: all 0.6s;
+}
+
+.nav-link:hover:before {
+    width: 100%;
+}
+
+#main {
+    min-height: 500px;
+    margin-top: 80px;
+}
+
+#footer {
+    background: #181818;
+    color: #ffffff;
+    padding: 40px 0;
 }
