@@ -54,45 +54,45 @@ window.onload = function () {
         // Validate required fields from the form
         // --------------------------------------        
         // Validate Name
-        if (contactForm.sender_name.value === "") {
+        if (contactForm.sender_name.value.trim() === "") {
             noName.style.display = "block";
             contactForm.sender_name.focus();
             showValidationError();
             return false;
         } else {
-            objSenderMsg.sSenderName = contactForm.sender_name.value;
+            objSenderMsg.sSenderName = contactForm.sender_name.value.trim();
             noName.style.display = "none";
         }
         
         // Validate Email
         var emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-        if (contactForm.sender_email.value === "") {
+        if (contactForm.sender_email.value.trim() === "") {
             noEmail.innerHTML = "Please enter an email address.";
             noEmail.style.display = "block";
             contactForm.sender_email.focus();
             showValidationError();
             return false;
-        } else if (!emailRegex.test(contactForm.sender_email.value)) {
+        } else if (!emailRegex.test(contactForm.sender_email.value.trim())) {
             noEmail.innerHTML = "Please enter a valid email address.";
             noEmail.style.display = "block";
             contactForm.sender_email.focus();
             showValidationError();
             return false;
         } else {
-            objSenderMsg.sEmailAdd = contactForm.sender_email.value;
+            objSenderMsg.sEmailAdd = contactForm.sender_email.value.trim();
             noEmail.style.display = "none";
         }
         
         // Validate Phone Number
         var phoneRegex = /^[0-9]{3}[ |-]?[0-9]{3}[ |-]?[0-9]{4}$/;
-        if (contactForm.sender_phone.value !== "") {
-            if (!phoneRegex.test(contactForm.sender_phone.value)) {
+        if (contactForm.sender_phone.value.trim() !== "") {
+            if (!phoneRegex.test(contactForm.sender_phone.value.trim())) {
                 noPhone.style.display = "block";
                 contactForm.sender_phone.focus();
                 showValidationError();
                 return false;
             } else {
-                objSenderMsg.sPhoneNum = contactForm.sender_phone.value;
+                objSenderMsg.sPhoneNum = contactForm.sender_phone.value.trim();
                 noPhone.style.display = "none";
             }
         }
@@ -103,24 +103,24 @@ window.onload = function () {
         }
         
         // Validate Subject
-        if (contactForm.message_subject.value === "") {
+        if (contactForm.message_subject.value.trim() === "") {
             noSubject.style.display = "block";
             contactForm.message_subject.focus();
             showValidationError();
             return false;
         } else {
-            objSenderMsg.sSubject = contactForm.message_subject.value;
+            objSenderMsg.sSubject = contactForm.message_subject.value.trim();
             noSubject.style.display = "none";
         }
         
         // Validate Message
-        if (contactForm.sender_message.value === "") {
+        if (contactForm.sender_message.value.trim() === "") {
             noMessage.style.display = "block";
             contactForm.message_subject.focus();
             showValidationError();
             return false;
         } else {
-            objSenderMsg.sMessage = contactForm.sender_message.value;
+            objSenderMsg.sMessage = contactForm.sender_message.value.trim();
             noMessage.style.display = "none";
         }
         // --- End of Validation ---
