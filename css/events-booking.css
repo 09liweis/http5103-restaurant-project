@@ -6,7 +6,7 @@
     margin-bottom: 20px;
 }
 
-.label {
+.form-label {
     display: block;
     margin-bottom: 4px;
 }
@@ -36,10 +36,24 @@
     box-shadow: rgba(0, 0, 0, 0.1) 0 1px 2px 0;
 }
 
+.event-image {
+    position: relative;
+}
+
 .event-image img {
     width: 100%;
 }
 
 .event-info {
     padding: 10px;
+}
+
+#eventform {
+    display: none;
+}
+
+#back-to-list {
+    width: 135px;
+    display: none;
+    margin-bottom: 20px;
 }
