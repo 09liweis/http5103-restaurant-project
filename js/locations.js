@@ -111,23 +111,21 @@ function renderRestaurants(restaurants, options) {
     restaurants.map(function(r) {
         reshtml += renderRes(r);
     });
+    reshtml += '<div class="clear"></div>';
     list.innerHTML = '';
     list.innerHTML = reshtml;
 }
 
 function renderRes(res) {
-    return '<div class="restaurant">'+
-                '<div class="res-image col">' +
+    return '<div class="restaurant col">'+
+                '<div class="res-image">' +
                     '<img src="' + res.photo + '" />' +
                 '</div>' +
-                '<div class="res-title col">' +
+                '<div class="res-info">' +
                     '<h3>' + res.name + '</h3>' +
-                '</div>' +
-                '<div class="res-info col">' +
                     '<p>Rating: ' + res.rating + '</p>' +
                     '<p>Cost: ' + res.cost + '</p>' +
                     '<p>Address: ' + res.address + '</p>' +
                 '</div>' +
-                '<div class="clear"></div>' +
             '</div>'
 }
