@@ -3,6 +3,13 @@ var fontAwesome = document.createElement('link');
     fontAwesome.rel = 'stylesheet';
     fontAwesome.href = 'https://use.fontawesome.com/1cf4c770b3.css';
     document.head.appendChild(fontAwesome);
+    
+var jQuery = document.createElement('script');
+jQuery.type = 'text/javascript';
+jQuery.src = 'https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js';
+
+document.head.appendChild(jQuery);
+
 
 var navs = [
     {

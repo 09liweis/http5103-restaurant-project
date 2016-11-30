@@ -19,6 +19,10 @@ ul {
     padding: 0;
 }
 
+h1 {
+    font-size: 2.75rem;
+}
+
 ul {
     list-style: none;
 }
@@ -47,6 +51,14 @@ a:hover {
     margin: auto;
 }
 
+.show {
+    display: block !important;
+}
+
+.hide {
+    display: none;
+}
+
 .clear {
     clear: both;
 }
@@ -69,16 +81,29 @@ a:hover {
 }
 
 .button {
+    display: inline-block;
+    border-radius: 3px;
+    padding: 10px 12px;
     background: #ffb606;
     color: #2a2a2a;
     cursor: pointer;
     transition: all 0.5s;
     font-size: 1.25rem;
+    border: none;
 }
 
 .button:hover {
     background: #2a2a2a;
     color: #ffffff;
+}
+
+.label {
+    position: absolute;
+    display: inline-block;
+    background: #ffb606;
+    padding: 5px;
+    top: 0;
+    left: 0;
 }
 
 #header {
@@ -87,6 +112,7 @@ a:hover {
     position: fixed;
     top: 0;
     width: 100%;
+    z-index: 100;
 }
 
 #logo {
