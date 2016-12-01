@@ -105,23 +105,23 @@ function renderDate() {
     var date = new Date();
     var dates = '<option class="form-input">Please select a date</option>';
     for (var i = date.getDate(); i <= 31; i++) {
-        var value = date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate();
-        dates += '<option class="form-input" value="' + value + '">' + value + '<option>';
+        var value = date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + i;
+        dates += '<option class="form-input" value="' + value + '">' + value + '</option>';
     }
     $('#date').html(dates);
 }
 
 function renderTime() {
     var date = new Date();
-    var hour = date.getHours();
     var times = '<option>Select start time</option>';
-    for (var h = hour; h < 24; h++) {
+    for (var h = date.getHours(); h < 24; h++) {
+        var value;
         if (h < 13) {
-            h = h + ':00am';
+            value = h + ':00am';
         } else {
-            h = (h - 12) + ':00pm';
+            value = (h - 12) + ':00pm';
         }
-        times += '<option value="' + h + '">' + h + '</option>';
+        times += '<option value="' + value + '">' + value + '</option>';
     }
     $('#start-time').html(times);
 }
