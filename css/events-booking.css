@@ -49,10 +49,6 @@
     transition: all 3s;
 }
 
-.event-image:hover {
-    transform: scale(1.5);
-}
-
 .event-image img {
     width: 100%;
 }
