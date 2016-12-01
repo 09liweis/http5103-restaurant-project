@@ -20,6 +20,10 @@
     width: 20%;
 }
 
+#end-time-form {
+    display: none;
+}
+
 #eventform textarea {
     height: 250px;
 }

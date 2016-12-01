@@ -51,6 +51,9 @@ var events = [
 
 window.onload = function() {
     
+    renderDate();
+    renderTime();
+    
     $('#events-list').html(renderEvents(events));
     
     $('#book-event').click(function() {
@@ -65,6 +68,10 @@ window.onload = function() {
         $('#eventform').hide('slow');
         $('#back-to-list').hide('slow');
         $('#book-event').show('slow');
+    });
+    
+    $('#start-time').change(function() {
+        $('#end-time-form').show('slow');
     });
 }
 
@@ -92,4 +99,29 @@ function renderEvent(event) {
                     '<p><i class="fa fa-clock-o"></i>' + event.startTime + ' - ' + event.endTime + '</p>' +
                 '</div>' +
             '</div>';
+}
+
+function renderDate() {
+    var date = new Date();
+    var dates = '<option class="form-input">Please select a date</option>';
+    for (var i = date.getDate(); i <= 31; i++) {
+        var value = date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate();
+        dates += '<option class="form-input" value="' + value + '">' + value + '<option>';
+    }
+    $('#date').html(dates);
+}
+
+function renderTime() {
+    var date = new Date();
+    var hour = date.getHours();
+    var times = '<option>Select start time</option>';
+    for (var h = hour; h < 24; h++) {
+        if (h < 13) {
+            h = h + ':00am';
+        } else {
+            h = (h - 12) + ':00pm';
+        }
+        times += '<option value="' + h + '">' + h + '</option>';
+    }
+    $('#start-time').html(times);
 }

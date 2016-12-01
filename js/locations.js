@@ -5,7 +5,7 @@ var restaurants = [
         lat: 43.7283515,
         lng: -79.6101083,
         address: 'somewhere',
-        photo: 'images/city-restaurant-lunch-outside.jpg',
+        photo: 'images/locations/city-restaurant-lunch-outside.jpg',
         cost: '$$',
         rating: 8
     },
@@ -14,7 +14,7 @@ var restaurants = [
         lat: 43.7279994,
         lng: -79.6071043,
         address: 'somewhere',
-        photo: 'images/dinner-meal-table-wine.jpg',
+        photo: 'images/locations/dinner-meal-table-wine.jpg',
         cost: '$$',
         rating: 8
     },
@@ -23,7 +23,7 @@ var restaurants = [
         lat: 43.7256537,
         lng: -79.6073304,
         address: 'somewhere',
-        photo: 'images/food-salad-restaurant-person.jpg',
+        photo: 'images/locations/food-salad-restaurant-person.jpg',
         cost: '$$',
         rating: 8
     },
@@ -32,7 +32,7 @@ var restaurants = [
         lat: 43.7323522,
         lng: -79.609769,
         address: 'somewhere',
-        photo: 'images/menu-restaurant-vintage-table.jpg',
+        photo: 'images/locations/menu-restaurant-vintage-table.jpg',
         cost: '$$',
         rating: 8
     },
@@ -41,7 +41,7 @@ var restaurants = [
         lat: 43.7245555,
         lng: -79.6193396,
         address: 'somewhere',
-        photo: 'images/pexels-photo-30503.jpg',
+        photo: 'images/locations/pexels-photo-30503.jpg',
         cost: '$$',
         rating: 8
     },
@@ -50,7 +50,7 @@ var restaurants = [
         lat: 43.7282305,
         lng: -79.6178161,
         address: 'somewhere',
-        photo: 'images/red-lunch-green-knolling.jpg',
+        photo: 'images/locations/red-lunch-green-knolling.jpg',
         cost: '$$',
         rating: 8
     },
