@@ -5,7 +5,7 @@ var events = [
         startTime: '2:00pm',
         endTime: '6:00pm',
         description: 'Event description',
-        photo: 'https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F26059567%2F66713630167%2F1%2Foriginal.jpg?h=140&w=280&rect=0%2C110%2C1346%2C673&s=53bb205cc3eed1d38c934098df7171e9',
+        photo: 'images/events/food-restaurant-fruits-orange.jpg',
     },
     {
         name: 'Team project celebration',
@@ -13,7 +13,7 @@ var events = [
         startTime: '2:00pm',
         endTime: '6:00pm',
         description: 'Event description',
-        photo: 'https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F26059567%2F66713630167%2F1%2Foriginal.jpg?h=140&w=280&rect=0%2C110%2C1346%2C673&s=53bb205cc3eed1d38c934098df7171e9',
+        photo: 'images/events/pexels-photo-26906.jpg',
     },
     {
         name: 'Exam done celebration',
@@ -21,7 +21,7 @@ var events = [
         startTime: '2:00pm',
         endTime: '6:00pm',
         description: 'Event description',
-        photo: 'https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F26059567%2F66713630167%2F1%2Foriginal.jpg?h=140&w=280&rect=0%2C110%2C1346%2C673&s=53bb205cc3eed1d38c934098df7171e9',
+        photo: 'images/events/pexels-photo-27642.jpg',
     },
     {
         name: 'Digital design Final Project celebration',
@@ -29,7 +29,7 @@ var events = [
         startTime: '2:00pm',
         endTime: '6:00pm',
         description: 'Event description',
-        photo: 'https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F26059567%2F66713630167%2F1%2Foriginal.jpg?h=140&w=280&rect=0%2C110%2C1346%2C673&s=53bb205cc3eed1d38c934098df7171e9',
+        photo: 'images/events/pexels-photo-92090.jpeg',
     },
     {
         name: 'Sam\'s birthday',
@@ -37,7 +37,7 @@ var events = [
         startTime: '2:00pm',
         endTime: '6:00pm',
         description: 'Event description',
-        photo: 'https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F26059567%2F66713630167%2F1%2Foriginal.jpg?h=140&w=280&rect=0%2C110%2C1346%2C673&s=53bb205cc3eed1d38c934098df7171e9',
+        photo: 'images/events/pexels-photo-127431.jpeg',
     },
     {
         name: 'Christmax Party',
@@ -45,11 +45,14 @@ var events = [
         startTime: '2:00pm',
         endTime: '6:00pm',
         description: 'Event description',
-        photo: 'https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F26059567%2F66713630167%2F1%2Foriginal.jpg?h=140&w=280&rect=0%2C110%2C1346%2C673&s=53bb205cc3eed1d38c934098df7171e9',
+        photo: 'images/events/restaurant-coffee-chocolate-dessert.jpg',
     },
 ];
 
 window.onload = function() {
+    
+    renderDate();
+    renderTime();
     
     $('#events-list').html(renderEvents(events));
     
@@ -65,6 +68,10 @@ window.onload = function() {
         $('#eventform').hide('slow');
         $('#back-to-list').hide('slow');
         $('#book-event').show('slow');
+    });
+    
+    $('#start-time').change(function() {
+        $('#end-time-form').show('slow');
     });
 }
 
@@ -82,9 +89,9 @@ function renderEvent(event) {
     var format = date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate();
     var expird = (format > event.date) ? '<div class="label">expird</div>' : '';
     return '<div class="event col">' +
-                '<div class="event-image">' +
+                '<div class="event-image" style="background-image: url(' + event.photo + ')">' +
                     expird +
-                    '<img src="' + event.photo + '" />' +
+                    //'<img src="' + event.photo + '" />' +
                 '</div>' +
                 '<div class="event-info">' +
                     '<h3>' + event.name + '</h3>' +
@@ -92,4 +99,29 @@ function renderEvent(event) {
                     '<p><i class="fa fa-clock-o"></i>' + event.startTime + ' - ' + event.endTime + '</p>' +
                 '</div>' +
             '</div>';
+}
+
+function renderDate() {
+    var date = new Date();
+    var dates = '<option class="form-input">Please select a date</option>';
+    for (var i = date.getDate(); i <= 31; i++) {
+        var value = date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate();
+        dates += '<option class="form-input" value="' + value + '">' + value + '<option>';
+    }
+    $('#date').html(dates);
+}
+
+function renderTime() {
+    var date = new Date();
+    var hour = date.getHours();
+    var times = '<option>Select start time</option>';
+    for (var h = hour; h < 24; h++) {
+        if (h < 13) {
+            h = h + ':00am';
+        } else {
+            h = (h - 12) + ':00pm';
+        }
+        times += '<option value="' + h + '">' + h + '</option>';
+    }
+    $('#start-time').html(times);
 }
