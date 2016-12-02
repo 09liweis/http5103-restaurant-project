@@ -159,7 +159,7 @@ window.onload = function () {
         var successMsg = document.getElementById("submit-success");
         
         // Hide validation error message
-        document.getElementById("validation-error").style.display = "none";
+        $("#validation-error").hide();
         
         // Build thank you message and reset form
         sThankYouMsg = "Thank you " + objSenderMsg.sSenderName + " for your message.<br />We hope to see you again"
@@ -169,12 +169,13 @@ window.onload = function () {
             sThankYouMsg += " at our " + objSenderMsg.sLocation + " restaurant.";
         }
         successMsg.innerHTML = sThankYouMsg;
-        successMsg.style.display = "block";
+        $("#submit-success").show("slow");
+        $("#submit-success").css('display', 'block');
         contactForm.reset();
         
         // Hide message after some time (7 seconds)
         var tMsgTimer = setTimeout(function () {
-            successMsg.style.display = "none";
+            $("#submit-success").hide("slow");
         }, 7000);
         
     } // end of function messageSent

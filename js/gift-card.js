@@ -84,8 +84,6 @@ window.onload = function() {
         // Update preview picture
         elCardPreview.children[0].src = this.children[0].src;
         
-        // Update gift card design in the 'Your Order' section as well
-        //elOrderPrevCard.children[0].src = this.children[0].src;
     } // end of function previewSelectedCard
     
     // Function to display selected predefined amount in the input textbox
