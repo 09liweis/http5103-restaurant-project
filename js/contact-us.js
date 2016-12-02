@@ -1,6 +1,6 @@
-/* =============== */
-/* Contact Us Page */
-/* =============== */
+/*-- Summary: Contact Us form, Business hours & Clients review  --*/
+/*-- Comment: Contact Us JavaScript File                        --*/
+/*-- Created: by Irfaan Auhammad on 13-Nov-2016                 --*/
 
 // Contact Message object
 var objSenderMsg = {
@@ -23,10 +23,14 @@ var lstTop10Reviews = [{sender: "Donny", reviewText: "Service was great and frie
                        {sender: "Matty R", reviewText: "Amazing food, fantastic hospitality and such great ambience. The restaurant is an absolute must, no excuses!"},
                        {sender: "Richard Ben", reviewText: "The service was first rate and the dinner was excellent. A great night out."},
                        {sender: "Troy C", reviewText: "Have been to this restaurant a few times now, food is always excellent, service great, place is popular, prices are good and reasonable."}];
+
+// Variables to track displayed reviews
 var currentReview = 0;
 var nextReview = 1;
 
+
 // Function wrapper
+// ----------------
 window.onload = function () {
 
     // Get form element and add listener to submit button
@@ -36,7 +40,9 @@ window.onload = function () {
     // Call function to display reviews on the sidebar
     rotateReviews();
     
-    /*### FUNCTIONS DECLARATION ###*/
+    
+    /* ### FUNCTIONS DECLARATION ### */
+    /* ----------------------------- */
     
     // Function triggered when user send message
     // -----------------------------------------
@@ -59,6 +65,7 @@ window.onload = function () {
             contactForm.sender_name.focus();
             showValidationError();
             return false;
+            
         } else {
             objSenderMsg.sSenderName = contactForm.sender_name.value.trim();
             noName.style.display = "none";
@@ -72,12 +79,14 @@ window.onload = function () {
             contactForm.sender_email.focus();
             showValidationError();
             return false;
+            
         } else if (!emailRegex.test(contactForm.sender_email.value.trim())) {
             noEmail.innerHTML = "Please enter a valid email address.";
             noEmail.style.display = "block";
             contactForm.sender_email.focus();
             showValidationError();
             return false;
+            
         } else {
             objSenderMsg.sEmailAdd = contactForm.sender_email.value.trim();
             noEmail.style.display = "none";
@@ -91,6 +100,7 @@ window.onload = function () {
                 contactForm.sender_phone.focus();
                 showValidationError();
                 return false;
+                
             } else {
                 objSenderMsg.sPhoneNum = contactForm.sender_phone.value.trim();
                 noPhone.style.display = "none";
@@ -108,6 +118,7 @@ window.onload = function () {
             contactForm.message_subject.focus();
             showValidationError();
             return false;
+            
         } else {
             objSenderMsg.sSubject = contactForm.message_subject.value.trim();
             noSubject.style.display = "none";
@@ -116,9 +127,10 @@ window.onload = function () {
         // Validate Message
         if (contactForm.sender_message.value.trim() === "") {
             noMessage.style.display = "block";
-            contactForm.message_subject.focus();
+            contactForm.sender_message.focus();
             showValidationError();
             return false;
+            
         } else {
             objSenderMsg.sMessage = contactForm.sender_message.value.trim();
             noMessage.style.display = "none";
@@ -136,13 +148,13 @@ window.onload = function () {
     // -------------------------------------------------
     function showValidationError () {
         document.getElementById("validation-error").style.display = "block";
-    }
+    } // end of function showValidationError
     
     // Function triggered when message was submitted successfully
     // ----------------------------------------------------------
     function messageSent () {
         
-        // variables declaration
+        // Variables declaration
         var sThankYouMsg = "";
         var successMsg = document.getElementById("submit-success");
         
@@ -160,22 +172,28 @@ window.onload = function () {
         successMsg.style.display = "block";
         contactForm.reset();
         
-        // Hide message after some time
+        // Hide message after some time (7 seconds)
         var tMsgTimer = setTimeout(function () {
             successMsg.style.display = "none";
         }, 7000);
         
-    }
+    } // end of function messageSent
     
     // Function to display top 10 reviews at a regular interval
     // --------------------------------------------------------
     function rotateReviews () {
         
         var tReviewsTimer = setInterval(function () {
-            console.log("Current display: " + currentReview);
             
-            document.getElementById("review-text").innerHTML = lstTop10Reviews[currentReview].reviewText;
-            document.getElementById("sender-name").innerHTML = lstTop10Reviews[currentReview].sender;
+            // Animate child's span opacity to 0, after that a call back function.
+            // This replaces the span's html with the new text while still at opacity 0.
+            // Then, do a backward animation to opacity 1.
+            $("#review-text").animate({'opacity': 0}, 400, function(){
+                $(this).html(lstTop10Reviews[currentReview].reviewText).animate({'opacity': 1}, 400);
+            });
+            $("#sender-name").animate({'opacity': 0}, 400, function(){
+                $(this).html(lstTop10Reviews[currentReview].sender).animate({'opacity': 1}, 400);
+            });
 
             if (nextReview < lstTop10Reviews.length) {
                 currentReview = nextReview;
@@ -184,8 +202,9 @@ window.onload = function () {
                 currentReview = 0;
                 nextReview = 1;
             }
+            
         }, 5000);
         
-    }
+    } // end of function rotateReviews
     
 }; // End of function wrapper

@@ -1,3 +1,7 @@
+/*-- Summary: Gift card order page              --*/
+/*-- Comment: Gift card order JavaScript File   --*/
+/*-- Created: by Irfaan Auhammad on 13-Nov-2016 --*/
+
 // Listener for window.onload to wrap all code inside
 window.onload = function() {
     
@@ -13,9 +17,6 @@ window.onload = function() {
     };
     var elCustomAmount = document.getElementById("gc-amount");
     var elErrMessage = document.getElementById("amount-err");
-    var elMainContent = document.getElementById("main-content");
-    var elOrderSummary = document.getElementById("order-summary");
-    
     var emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
     
     
@@ -336,12 +337,12 @@ window.onload = function() {
         showCurrentOrder();
         
         return false;   // prevent the form from submitting
-    }
+    } // end of function processOrder
     
     // Function to show generic validation error message
     function showValidationError () {
         document.getElementById("validation-error").style.display = "block";
-    }
+    } // end of function showValidationError
     
     // Function to hide order form and show order summary
     function showCurrentOrder() {
@@ -365,17 +366,16 @@ window.onload = function() {
         successMsg.innerHTML = sThankYouMsg;
         
         // Hide order form and show order summary
-        elMainContent.classList.add("hidden");
-        elOrderSummary.classList.remove("hidden");
-    }
+        $('#main-content').hide('slow');
+        $('#order-summary').show('slow');
+    } // end of function showCurrentOrder
     
     // Function to edit order details
     function modifyOrder() {
         // Hide order summary and show form order again
-        elOrderSummary.classList.add("hidden");
-        elMainContent.classList.remove("hidden");
-        document.getElementById('input-amount').scrollIntoView();
-    }
+        $('#order-summary').hide('slow');
+        $('#main-content').show('slow');
+    } // end of function modifyOrder
     
     // Function to cancel current order
     function cancelOrder() {
@@ -383,18 +383,19 @@ window.onload = function() {
         if (confirmAction === true) {
             // Hide order summary and show a form after reset
             frmOrderSubmission.reset();
-            elOrderSummary.classList.add("hidden");
-            elMainContent.classList.remove("hidden");
+            $('#order-summary').hide('slow');
+            $('#main-content').show('slow');
         }
-    }
+    } // end of cancelOrder
     
     // Function called when user confirmed order
     function confirmOrder() {
         // Hide order summary and show a form after reset
         window.location.href="gift-card.html";
-        elOrderSummary.classList.add("hidden");
-        elMainContent.classList.remove("hidden");
-    }
+        $('#order-summary').hide('slow');
+        $('#main-content').show('slow');
+        alert("Thank you " + objOrderSummary.sPurchaserName + " for your order!");
+    } // end of confirmOrder
     
 } // end of onload function
 

@@ -1,3 +1,7 @@
+/*-- Summary: Gift card order page              --*/
+/*-- Comment: Gift card order page              --*/
+/*-- Created: by Irfaan Auhammad on 21-Nov-2016 --*/
+
 /* Border box property */
 /* ------------------- */
 html {
@@ -8,15 +12,12 @@ html {
 	box-sizing: inherit;
 }
 
+
 /* HTML Elements */
 /* ------------- */
 .hidden {
     position: absolute;
     left: -10000px;
-}
-
-.wrapper {
-    color: #000000;
 }
 
 a {
@@ -33,20 +34,22 @@ a {
     padding: 1em 1em;
 }
 
-h2 {
-    font-size: 2em;
-}
-
 #sidebar {
-    float: right;
+    display: inline-block;
     width: 30%;
     margin-top: 1em;
     padding: 1em 1em;
-    border: 1px dotted yellow;
+    border: 1px dotted red;
     color: aqua;
 }
 
+#main-content, #sidebar {
+    vertical-align: top;
+}
+
+
 /* Card Preview */
+/* ------------ */
 #card-preview {
     width: 55%;
     display: inline-block;
@@ -69,16 +72,13 @@ h2 {
     padding-right: 0.5em;
 }
 
-#personal-msg {
+#personal-msg {    
     width: 100%;
-    border: 1px solid #23272c;
     font-size: 1.2em;
-    padding: 0.75em 0.75em;
-    border-radius: 5px;
 }
 
 .selected-card img {
-    border: 5px solid burlywood;
+    border: 5px solid #ffb606;
     border-radius: 15px;
 }
 
@@ -86,9 +86,10 @@ h2 {
     cursor: pointer;
 }
 
+
 /* Select Gift Amount */
-#main p {
-    font-style: italic;
+/* ------------------ */
+#gift-card-intro p {
     color: #23272c;
     margin: 0.4em 0;
     font-size: 1.1em;
@@ -123,24 +124,34 @@ h2 {
 
 #predefined-amount li {
     display: inline;
-    border: 1px solid burlywood;
+    border: 1px solid #ffb606;
     padding: 0.5em 1em;
     margin: 0 0.25em;
     font-weight: bold;
     font-size: 1.25em;
     cursor: pointer;
+    transition: all 0.5s;
 }
 
 #predefined-amount li:hover {
-    background-color: burlywood;
+    background: #2a2a2a;
+    color: #ffffff;
+    border: 1px solid #2a2a2a;
 }
 
 .amount-selected {
-    background-color: burlywood;
+    background: #ffb606 !important;
+    color: #2a2a2a !important;
+    border: 1px solid #ffb606 !important;
 }
 
 #gc-amount {
     width: auto;
+}
+
+.allowed-amt {
+    color: #ffb606;
+    font-weight: bold;
 }
 
 label {
@@ -170,25 +181,15 @@ input, select {
 }
 
 button {
-    border: none;
-    font-weight: bold;
-    padding: 10px 10px;
-    text-align: center;
-    font-size: 1.25em;
-    cursor: pointer;
-    border-radius: 5px;
-    text-decoration: none;
-    background-color: #23272c;
-    color: white;
-    box-shadow: 3px 3px 6px 0 rgba(0,0,0,0.3);
     margin-top: 1em;
 }
 
 
 /* Your order summary */
-/* ------- */
+/* ------------------ */
 #order-summary {
     margin-top: 0;
+    display: none;
 }
 
 #confirmTheOrder {
@@ -239,17 +240,25 @@ button {
     display: inline;
     margin: 0 0 0.5em 0.5em;
     padding: 0.75em 0.5em;
-    border: 1px solid burlywood;
+    border: 1px solid #ffb606;
+    cursor: pointer;
+    transition: all 0.5s;
 }
 
 #modify-order li:hover {
-    background-color: burlywood;
+    background: #2a2a2a;
+    color: #ffffff;
+    border: 1px solid #2a2a2a;
 }
 
 #modify-order a {
     text-transform: uppercase;
     font-weight: bold;
     font-size: 1em;
+}
+
+#modify-order li:hover a {
+    color: #ffffff;    
 }
 
 .flex-container {
@@ -262,7 +271,7 @@ div.flex-container div:last-child {
     flex: 1 0 auto;
 }
 
-h3 {
+#main h2 {
     color: #333;
     letter-spacing: 1px;
     padding: 0.5em 0;
@@ -271,7 +280,7 @@ h3 {
     margin-top: 1em;
 }
 
-h4 {
+h3 {
     color: #333;
     font-size: 1.1em;
     margin: 0.75em 0;
@@ -286,4 +295,8 @@ h4 {
     font-size: 1.25em;
     font-weight: bold;
     margin-bottom: 1em;
+}
+
+#amount-due {
+    font-weight: bold;
 }
