@@ -57,21 +57,21 @@ window.onload = function() {
     $('#events-list').html(renderEvents(events));
     
     $('#book-event').click(function() {
-        $('#events-list').hide('slow');
-        $('#eventform').show('slow');
-        $('#book-event').hide('slow');
-        $('#back-to-list').show('slow');
+        $('#events-list').hide('fast');
+        $('#eventform').show('fast');
+        $('#book-event').hide('fast');
+        $('#back-to-list').show('fast');
     });
     
     $('#back-to-list').click(function() {
-        $('#events-list').show('slow');
-        $('#eventform').hide('slow');
-        $('#back-to-list').hide('slow');
-        $('#book-event').show('slow');
+        $('#events-list').show('fast');
+        $('#eventform').hide('fast');
+        $('#back-to-list').hide('fast');
+        $('#book-event').show('fast');
     });
     
     $('#start-time').change(function() {
-        $('#end-time-form').show('slow');
+        $('#end-time-form').show('fast');
     });
 }
 

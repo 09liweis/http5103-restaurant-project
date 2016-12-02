@@ -102,16 +102,16 @@ window.onload = function() {
         $('#show-map').addClass('active');
         $('#show-list').removeClass('active');
         
-        $('#map').show('slow');
-        $('#res-list').hide('slow');
+        $('#map').show('fast');
+        $('#res-list').hide('fast');
     });
     
     $('#show-list').click(function() {
         $('#show-map').removeClass('active');
         $('#show-list').addClass('active');
         
-        $('#map').hide('slow');
-        $('#res-list').show('slow');
+        $('#map').hide('fast');
+        $('#res-list').show('fast');
     })
 }
 
