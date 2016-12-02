@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Restraurant Name</title>
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+       <header id="header">
+           
+       </header>
+       <main id="main">
+          <div id="carousel">
+          <h1>RESTAURANT</h1>
+           <ul id="slides"><!-- slider with images -->
+               <li><a class="slide-link" href="menu.html">LOOK MENU</a><img src="images/slideImg1.jpg" alt="image1"></li>
+               <li><a class="slide-link" href="daily-specials.html">DAILY SPECIALS</a><img src="images/slideImg2.jpg" alt="image2"></li>
+               <li><a class="slide-link" href="events-booking.html">BOOK AN EVENT</a><img src="images/slideImg3.jpg" alt="image3"></li>
+               <li><a class="slide-link" href="gift-card.html">GIFT CARDS</a><img src="images/slideImg4.jpg" alt="image4"></li>
+           </ul>
+           <div class="right-arrow"></div>
+           <div class="left-arrow"></div>
+           <div id="timer-indicators"><!--small triangles (indicators) -->
+               <div></div>
+               <div></div>
+               <div></div>
+               <div></div>
+           </div>
+          </div>
+          <div class="content-wrapper">
+              <div id="booking-section"><!--booking a table section (with form)-->
+                  <h2>Book a</h2>
+                  <p>TABLE</p>
+                  <p>Opening Hour <strong>8:00</strong> AM - <strong>10:00</strong> PM, every day on week.</p>
+                  <form method="post">
+                      <select name="time" id="Utime">
+                          <option value="noTime" selected>---Time---</option>
+                          <option value="11-30">11:30 am</option>
+                          <option value="12-00">12:00 pm</option>
+                          <option value="12-30">12:30 pm</option>
+                      </select>
+                      <select name="date" id="Udate">
+                          <option value="noDate" selected>---Date---</option>
+                          <option value="1"></option>
+                          <option value="2"></option>
+                      </select>
+                      <select name="date" id="Upeople">
+                          <option value="1">1 Person</option>
+                          <option value="2" selected>2 People</option>
+                          <option value="3">3 People</option>
+                      </select>
+                      <button type="submit">BOOK A TABLE</button>
+                      <p id="msgBook" class="hidden"></p>
+                  </form>
+              </div>
+          </div>
+          <div id="newsletter"><!--newsletter form-->
+              <form method="post">
+                  <label for="email">GET OUR NEWSLETTER</label>
+                  <input type="email" id="email" name="uEmail" placeholder="Your email here">
+                  <button type="submit">SIGN IN</button>
+              </form>
+              <p class="hidden"></p>
+          </div>
+       </main>
+       <footer id="footer">
+           
+       </footer>
+   
+   
+   
+   
+    <script src="js/common.js"></script>
+    <script src="js/index.js"></script>
+</body>
+</html>
