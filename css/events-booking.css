@@ -20,6 +20,10 @@
     width: 20%;
 }
 
+#end-time-form {
+    display: none;
+}
+
 #eventform textarea {
     height: 250px;
 }
@@ -37,7 +41,16 @@
 }
 
 .event-image {
+    width: 100%;
     position: relative;
+    height: 175px;
+    background-size: cover;
+    background-position: 50% 50%;
+    transition: all 3s;
+}
+
+.event-image:hover {
+    transform: scale(1.5);
 }
 
 .event-image img {

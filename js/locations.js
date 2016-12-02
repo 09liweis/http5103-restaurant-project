@@ -2,61 +2,59 @@ var map;
 var restaurants = [
     {
         name: 'restaurant-1',
-        lat: 43.567,
-        lng: -79.4567,
+        lat: 43.7283515,
+        lng: -79.6101083,
         address: 'somewhere',
-        photo: 'http://preview.byaviators.com/theme/superlist/wp-content/uploads/2015/10/photo-1433155805822-ffc337821a5b-600x400.jpeg',
+        photo: 'images/locations/city-restaurant-lunch-outside.jpg',
         cost: '$$',
         rating: 8
     },
     {
         name: 'restaurant-2',
-        lat: 43.667,
-        lng: -79.2567,
+        lat: 43.7279994,
+        lng: -79.6071043,
         address: 'somewhere',
-        photo: 'http://preview.byaviators.com/theme/superlist/wp-content/uploads/2015/10/photo-1433155805822-ffc337821a5b-600x400.jpeg',
+        photo: 'images/locations/dinner-meal-table-wine.jpg',
         cost: '$$',
         rating: 8
     },
     {
         name: 'restaurant-3',
-        lat: 43.167,
-        lng: -79.8567,
+        lat: 43.7256537,
+        lng: -79.6073304,
         address: 'somewhere',
-        photo: 'http://preview.byaviators.com/theme/superlist/wp-content/uploads/2015/10/photo-1433155805822-ffc337821a5b-600x400.jpeg',
+        photo: 'images/locations/food-salad-restaurant-person.jpg',
         cost: '$$',
         rating: 8
     },
     {
         name: 'restaurant-4',
-        lat: 43.567,
-        lng: -79.3567,
+        lat: 43.7323522,
+        lng: -79.609769,
         address: 'somewhere',
-        photo: 'http://preview.byaviators.com/theme/superlist/wp-content/uploads/2015/10/photo-1433155805822-ffc337821a5b-600x400.jpeg',
+        photo: 'images/locations/menu-restaurant-vintage-table.jpg',
         cost: '$$',
         rating: 8
     },
     {
         name: 'restaurant-5',
-        lat: 43.067,
-        lng: -79.567,
+        lat: 43.7245555,
+        lng: -79.6193396,
         address: 'somewhere',
-        photo: 'http://preview.byaviators.com/theme/superlist/wp-content/uploads/2015/10/photo-1433155805822-ffc337821a5b-600x400.jpeg',
+        photo: 'images/locations/pexels-photo-30503.jpg',
         cost: '$$',
         rating: 8
     },
     {
         name: 'restaurant-1',
-        lat: 43.367,
-        lng: -79.2567,
+        lat: 43.7282305,
+        lng: -79.6178161,
         address: 'somewhere',
-        photo: 'http://preview.byaviators.com/theme/superlist/wp-content/uploads/2015/10/photo-1433155805822-ffc337821a5b-600x400.jpeg',
+        photo: 'images/locations/red-lunch-green-knolling.jpg',
         cost: '$$',
         rating: 8
     },
 ];
-
-var list = document.getElementById('list');
 
 var college = {lat: 43.7283324, lng: -79.6079205}
 var markers = [];
@@ -64,7 +62,7 @@ var infos = [];
 function initMap() {
     map = new google.maps.Map(document.getElementById('map'), {
         center: college,
-        zoom: 9,
+        zoom: 15,
         scrollwheel: false,
     });
     
@@ -97,7 +95,25 @@ function initMap() {
     })
 }
 
-renderRestaurants(restaurants);
+window.onload = function() {
+    $('#res-list').html(renderRestaurants(restaurants));
+    
+    $('#show-map').click(function() {
+        $('#show-map').addClass('active');
+        $('#show-list').removeClass('active');
+        
+        $('#map').show('slow');
+        $('#res-list').hide('slow');
+    });
+    
+    $('#show-list').click(function() {
+        $('#show-map').removeClass('active');
+        $('#show-list').addClass('active');
+        
+        $('#map').hide('slow');
+        $('#res-list').show('slow');
+    })
+}
 
 function closeOtherInfos() {
     var numInfos = infos.length;
@@ -112,8 +128,7 @@ function renderRestaurants(restaurants, options) {
         reshtml += renderRes(r);
     });
     reshtml += '<div class="clear"></div>';
-    list.innerHTML = '';
-    list.innerHTML = reshtml;
+    return reshtml;
 }
 
 function renderRes(res) {
