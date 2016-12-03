@@ -1,3 +1,4 @@
+// list of events
 var events = [
     {
         name: 'Kid birthday',
@@ -50,10 +51,11 @@ var events = [
 ];
 
 window.onload = function() {
-    
+    //render dynamic date and time for event booking
     renderDate();
     renderTime();
     
+    //render events
     $('#events-list').html(renderEvents(events));
     
     $('#book-event').click(function() {
@@ -75,6 +77,7 @@ window.onload = function() {
     });
 }
 
+//function to render events
 function renderEvents(events) {
     var eventsHTML = '';
     events.map(function(event) {
@@ -84,6 +87,8 @@ function renderEvents(events) {
     return eventsHTML;
 }
 
+
+//function to render single event
 function renderEvent(event) {
     var date = new Date();
     var format = date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate();
@@ -101,6 +106,7 @@ function renderEvent(event) {
             '</div>';
 }
 
+//function to render future dates
 function renderDate() {
     var date = new Date();
     var dates = '<option class="form-input">Please select a date</option>';
@@ -111,6 +117,7 @@ function renderDate() {
     $('#date').html(dates);
 }
 
+//function to render future time
 function renderTime() {
     var date = new Date();
     var times = '<option>Select start time</option>';
