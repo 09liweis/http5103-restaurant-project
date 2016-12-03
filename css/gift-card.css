@@ -28,10 +28,18 @@ a {
 #main-content, #order-summary {
     display: inline-block;
     margin-right: -4px;
-    width: 70%;
+    width: 60%;
     height: auto;
     margin-top: 1em;
     padding: 1em 1em;
+}
+
+#coundDownTimer {
+    display: inline-block;
+    width: 37%;
+    height: auto;
+    margin-left: 3%;
+    position: fixed;
 }
 
 #sidebar {
@@ -112,7 +120,7 @@ a {
 }
 
 #gc-amount {
-    width: 25% !important;
+    width: 30% !important;
     font-weight: bold;
     text-align: right;
     padding: 0.5em 0.5em;
@@ -143,10 +151,6 @@ a {
     background: #ffb606 !important;
     color: #2a2a2a !important;
     border: 1px solid #ffb606 !important;
-}
-
-#gc-amount {
-    width: auto;
 }
 
 .allowed-amt {
@@ -299,4 +303,41 @@ h3 {
 
 #amount-due {
     font-weight: bold;
+}
+
+#clockdiv{
+	text-align: center;
+	display: none;
+}
+
+#coundDownTimer .container{
+	display: inline-block;
+	border-radius: 5px;
+	padding: 10px;
+	background-color: #2a2a2a;
+	margin: 4px;
+}
+
+#coundDownTimer span{
+	display: inline-block;
+	color: #2a2a2a;
+	background-color: #ffb606;
+	border-radius: 5px;
+	opacity: 0.9;
+	font-size: 2em;
+	padding: 0.5em;
+}
+
+/* Override span for days and time */
+.newYear {
+    display: inline !important;
+    color: #2a2a2a !important;
+    padding: 0 !important;
+    background-color: transparent !important;
+    font-size: 1.5em !important;
+}
+
+#coundDownTimer .smalltext{
+	color: white;
+	padding-top: 0.5em;
 }

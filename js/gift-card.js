@@ -18,7 +18,12 @@ window.onload = function() {
     var elCustomAmount = document.getElementById("gc-amount");
     var elErrMessage = document.getElementById("amount-err");
     var emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-    
+    // Array containing all the PREDEFINED schedule's start and end date
+	var schedule = [
+		['Dec 01 2015', 'Jan 01 2016'],
+		['Dec 01 2016', 'Jan 01 2017'],
+		['Dec 01 2017', 'Jan 01 2018']
+	];
     
     // --- Dynamic preview of gift card selected ---
     // ---------------------------------------------
@@ -39,7 +44,6 @@ window.onload = function() {
     
     // Add click event to each amount
     for (var i = 0; i < lstPredefinedAmts.length; i++) {
-        //console.log(lstPredefinedAmts[i].children[0].innerHTML);
         lstPredefinedAmts[i].onclick = predefinedAmountSelected;
     }
     
@@ -62,9 +66,29 @@ window.onload = function() {
     // ------------------------
     document.getElementById("cancel-order").onclick = cancelOrder;
     
+    
     // Handling of confirm order
     // -------------------------
     document.getElementById("btn_ok").onclick = confirmOrder;
+    
+    
+    // Check if there are any valid schedule to show timer
+    // ---------------------------------------------------
+	for(var i=0; i<schedule.length; i++){
+		var startDate = schedule[i][0];
+		var endDate = schedule[i][1];
+		
+		// Convert to miliseconds
+		var startMs = Date.parse(startDate);
+		var endMs = Date.parse(endDate);
+		var currentMs = Date.parse(new Date());
+		
+		// Display clock if current date between start and end dates
+		if(currentMs >= startMs && currentMs < endMs){
+			initialiseClock('clockdiv', endDate);
+			break;
+		}
+	}
     
     
     // === FUNCTIONS DECLARATION === //
@@ -366,6 +390,9 @@ window.onload = function() {
         // Hide order form and show order summary
         $('#main-content').hide('slow');
         $('#order-summary').show('slow');
+        $('#order-summary').css('display', 'inline-block');
+        $('#coundDownTimer').css('vertical-align', 'top');
+        
     } // end of function showCurrentOrder
     
     // Function to edit order details
@@ -394,6 +421,55 @@ window.onload = function() {
         $('#main-content').show('slow');
         alert("Thank you " + objOrderSummary.sPurchaserName + " for your order!");
     } // end of confirmOrder
+    
+    // Function to calculate remaining time
+    function getTimeRemaining(endTime){
+        var t = Date.parse(endTime) - Date.parse(new Date());
+        var seconds = Math.floor((t/1000) % 60);
+        var minutes = Math.floor((t/1000/60) % 60);
+        var hours = Math.floor((t/(1000*60*60)) % 24);
+        var days = Math.floor(t/(1000*60*60*24));
+        return{
+            'total': t,
+            'days': days,
+            'hours': hours,
+            'minutes': minutes,
+            'seconds': seconds
+        };
+    }
+
+    // Function to display the countdown clock
+    function initialiseClock(id, endtime){
+        var clock = document.getElementById(id);
+        clock.style.display = 'block';	// the div is hidden by default
+        var daysSpan = clock.querySelector('.days');
+        var hoursSpan = clock.querySelector('.hours');
+        var minutesSpan = clock.querySelector('.minutes');
+        var secondsSpan = clock.querySelector('.seconds');
+        var newYearSpan = clock.querySelector('.newYear');
+
+        // Update the clock time
+        function updateClock(){
+            var t = getTimeRemaining(endtime);
+
+            if (t.days < 10){
+                daysSpan.innerHTML = ('0' + t.days).slice(-2);
+            }else{
+                daysSpan.innerHTML = t.days;
+            }
+            hoursSpan.innerHTML = ('0' + t.hours).slice(-2);
+            minutesSpan.innerHTML = ('0' + t.minutes).slice(-2);
+            secondsSpan.innerHTML = ('0' + t.seconds).slice(-2);
+            newYearSpan.innerHTML = new Date(endDate).getFullYear();
+
+            if(t.total <= 0){
+                clearInterval(timeInterval);
+            }
+        }
+
+        updateClock();	// run function once at first
+        var timeInterval = setInterval(updateClock, 1000);
+    }
     
 } // end of onload function
 

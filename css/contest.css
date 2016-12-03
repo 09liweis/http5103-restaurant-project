@@ -1,0 +1,171 @@
+/*-- Summary: Contest Page with a rigged contest --*/
+/*-- Comment: Contest CSS Page                   --*/
+/*-- Created: by Irfaan Auhammad on 22-Nov-2016  --*/
+
+/* Border box property */
+/* ------------------- */
+html {
+	box-sizing: border-box;
+}
+
+*, *:before, *:after {
+	box-sizing: inherit;
+}
+
+/* 2. HTML Elements */
+/* ---------------- */
+h1 {
+    margin-bottom: 0.5em;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+}
+
+#footer {
+    margin-top: 1em;
+}
+
+.hidden {
+	position: absolute;
+	left: -10000px;
+}
+
+#usedImages img {
+	width: 70px;
+	height: 70px;
+	display: inline;
+}
+
+.invisible {
+	visibility: hidden;
+}
+
+/* 3. Multi-column formatting */
+/* -------------------------- */
+#cards-canvas {
+	display: inline-block;
+	width: 60%;
+	margin-right: -4px;
+	padding: 0 1em;
+	position: relative;
+}
+
+#userInfo {
+	position: absolute;
+	z-index: 10;
+	top: 40%;
+	left: 25%;
+	background-color: #ffb606;
+	padding: 1em 1em;
+	font-size: 1.2em;
+	border-radius: 10px 10px;
+	color: #2a2a2a;
+	-webkit-box-shadow: 0 8px 6px -6px black;
+    -moz-box-shadow: 0 8px 6px -6px black;
+    box-shadow: 0 8px 6px -6px black;
+	max-width: 300px;
+	text-align: center;
+}
+
+#roundInfo {
+	position: absolute;
+	z-index: 8;
+	top: 45%;
+	left: 33%;
+	background-color: #9AF40D;
+	padding: 0.8em 1.2em;
+	font-size: 1.2em;
+	border-radius: 10px 10px;
+	color: #9372E8;
+	-webkit-box-shadow: 0 8px 6px -6px black;
+    -moz-box-shadow: 0 8px 6px -6px black;
+    box-shadow: 0 8px 6px -6px black;
+	max-width: 300px;
+	text-align: center;
+}
+
+#myCanvas {
+	background-color: #ffb606;
+	margin-top: 0.8em;
+}
+
+#score-panel {
+	display: inline-block;
+	border: 1px solid #23272c;
+	width: 25%;
+	margin-left: 5%;
+	margin-right: 10%;
+    color: #23272c;
+	background-color: #21b0d1;
+	opacity: 0.9;
+	vertical-align: top;
+	padding: 1em 1em;
+}
+
+button {
+    border: none;
+    font-weight: bold;
+    padding: 10px 10px;
+    font-size: 0.9em !important;
+    text-decoration: none !important;
+	margin: 0 2px !important;
+}
+
+button:disabled {
+    background: #dddddd;
+}
+
+button:focus {
+	border: 3px solid #2a2a2a;
+}
+
+#score-panel h2 {
+	margin: 0;
+	text-align: center;
+	color: #fff;
+	border-bottom: 1px solid #fff;
+}
+
+div.star-label, #btn_controls {
+	border-top: 1px dashed #fff;
+	padding-top: 8px;
+}
+
+.collected-cards div {
+	display: inline;
+}
+
+.collected-cards img {
+	width: 35px;
+	height: 35px;
+}
+
+#attempt-left {
+	font-size: 2em;
+    font-weight: bold;
+    color: #ffb606;
+}
+
+.num-collected {
+    color: #ffb606;
+}
+
+div.collected-cards, #attempts {
+	margin-bottom: 0.5em;
+}
+
+.star-label, #attempts {
+	font-weight: bold;
+}
+
+#btn_controls {
+	text-align: center;
+}
+
+.prize {
+	font-size: 1.2em;
+	color: #74FF00;
+	font-weight: bold;
+}

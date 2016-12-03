@@ -75,46 +75,42 @@
                     <h2>Provide the following details to complete your order</h2>
 
                     <h3>To</h3>
+                    <!-- Recipient's Name-->
                     <div class="labelling"><span class="required-field">*</span><label for="r_name"> Recipient's Name</label></div>
-                    <div>
-                        <input type="text" id="r_name" name="recipient_name" placeholder="Mum, Bob, Nickname" class="form-input" />
-                        <span id="no_r_name" class="validation-error"> Please enter the recipient's name.</span>
-                    </div>
-
+                    <div><input type="text" id="r_name" name="recipient_name" placeholder="Mum, Bob, Nickname" class="form-input" /></div>
+                    <div><span id="no_r_name" class="validation-error"> Please enter the recipient's name.</span></div>
+                    
+                    <!-- Recipient's email-->
                     <div class="labelling"><span class="required-field">*</span><label for="r_mail"> Recipient's Email Address</label></div>
-                    <div>
-                        <input type="text" id="r_email" name="recipient_email" placeholder="myfriend@email.com" class="form-input" />
-                        <span id="no_r_email" class="validation-error"> Please provide the recipient's email.</span>
-                    </div>
+                    <div><input type="text" id="r_email" name="recipient_email" placeholder="myfriend@email.com" class="form-input" /></div>
+                    <div><span id="no_r_email" class="validation-error"> Please provide the recipient's email.</span></div>
 
                     <h3>From</h3>
+                    <!-- Purchaser's Name -->
                     <div class="labelling"><span class="required-field">*</span><label for="p_name"> Purchaser's Name</label></div>
-                    <div>
-                        <input type="text" id="p_name" name="purchaser_name" placeholder="Dad, Johnny, Nickname" class="form-input" />
-                        <span id="no_p_name" class="validation-error"> Please enter your name.</span>
-                    </div>
-
+                    <div><input type="text" id="p_name" name="purchaser_name" placeholder="Dad, Johnny, Nickname" class="form-input" /></div>
+                    <div><span id="no_p_name" class="validation-error"> Please enter your name.</span></div>
+                    
+                    <!-- Purchaser's email -->
                     <div class="labelling"><span class="required-field">*</span><label for="p_email"> Purchaser's Email Address</label></div>
-                    <div>
-                        <input type="text" id="p_email" name="purchaser_email" placeholder="myown@email.com" class="form-input" />
-                        <span id="no_p_email" class="validation-error"> Please provide your email.</span>
-                    </div>
-
+                    <div><input type="text" id="p_email" name="purchaser_email" placeholder="myown@email.com" class="form-input" /></div>
+                    <div><span id="no_p_email" class="validation-error"> Please provide your email.</span></div>
+                    
+                    <!-- Purchaser's Address 1 -->
                     <div class="labelling"><span class="required-field">*</span><label for="p_add1"> Purchaser's Address 1</label></div>
-                    <div>
-                        <input type="text" id="p_add1" name="purchaser_add1" placeholder="Street name 1" class="form-input" />
-                        <span id="no_p_add1" class="validation-error"> Please enter an address.</span>
-                    </div>
-
+                    <div><input type="text" id="p_add1" name="purchaser_add1" placeholder="Street name 1" class="form-input" /></div>
+                    <div><span id="no_p_add1" class="validation-error"> Please enter an address.</span></div>
+                    
+                    <!-- Purchaser's Address 2 -->
                     <div class="labelling"><label for="p_add2">Address Line 2</label></div>
                     <div><input type="text" id="p_add2" name="purchaser_add2" placeholder="Streen name 2" class="form-input" /></div>
-
+                    
+                    <!-- Purchaser's City -->
                     <div class="labelling"><span class="required-field">*</span><label for="p_city"> City</label></div>
-                    <div>
-                        <input type="text" id="p_city" name="purchaser_city" placeholder="City" class="form-input" />
-                        <span id="no_p_city" class="validation-error"> Please enter a city.</span>
-                    </div>
-
+                    <div><input type="text" id="p_city" name="purchaser_city" placeholder="City" class="form-input" /></div>
+                    <div><span id="no_p_city" class="validation-error"> Please enter a city.</span></div>
+                    
+                    <!-- Purchaser's Province -->
                     <div class="labelling"><span class="required-field">*</span><label for="p_prov"> Province</label></div>
                     <div>
                         <select id="p_prov" name="purchaser_prov" class="form-input">
@@ -133,20 +129,19 @@
                             <option value="SK">Saskatchewan</option>
                             <option value="YT">Yukon</option>
                         </select>
-                        <span id="n_p_prov" class="validation-error"> Please select a province.</span>
                     </div>
-
+                    <div><span id="n_p_prov" class="validation-error"> Please select a province.</span></div>
+                    
+                    <!-- Purchaser's Postal Code -->
                     <div class="labelling"><span class="required-field">*</span><label for="p_pc"> Purchaser's Postal Code</label></div>
-                    <div>
-                        <input type="text" id="p_pc" name="purchaser_pc" placeholder="e.g. A1A 2B2" class="form-input" />
-                        <span id="no_p_pc" class="validation-error"> Please enter your postal code.</span>
-                    </div>
-
+                    <div><input type="text" id="p_pc" name="purchaser_pc" placeholder="e.g. A1A 2B2" class="form-input" /></div>
+                    <div><span id="no_p_pc" class="validation-error"> Please enter your postal code.</span></div>
+                    
+                    <!-- Purchaser's Phone Number -->
                     <div class="labelling"><span class="required-field">*</span><label for="p_pn"> Phone Number</label></div>
-                    <div>
-                        <input type="text" id="p_pn" name="purchaser_pn" placeholder="e.g. 647 555 0000" class="form-input" />
-                        <span id="no_pn" class="validation-error"> Please provide a phone number.</span>
-                    </div>
+                    <div><input type="text" id="p_pn" name="purchaser_pn" placeholder="e.g. 647 555 0000" class="form-input" /></div>
+                    <div><span id="no_pn" class="validation-error"> Please provide a phone number.</span></div>
+                    
                 </section>
                 
                 <!-- Submit & reset buttons -->
@@ -154,6 +149,7 @@
                     <button type="submit" id="sub_button" name="f_submit" class="button">Submit Order</button>
                     <button type="reset" id="res_button" name="f_reset"  class="button">Reset Order</button>
                 </div>
+                    
                 <div id="validation-error">
                     Unable to submit your message due to some validation errors.<br />
                     Please review and submit again.
@@ -193,6 +189,30 @@
                 </div>
                 <div id="confirmTheOrder"><button type="button" id="btn_ok" class="button">OK</button></div>
             </section>
+            
+            <!-- Side bar with countdown to new year -->
+            <aside id="coundDownTimer">
+                <div id="clockdiv">
+                    <h2 class="sidebar">Happy New Year <span class="newYear"></span></h2>
+                    <div class="container">
+                        <span class="days"></span>
+                        <div class="smalltext">Days</div>
+                    </div>
+                    <div class="container">
+                        <span class="hours"></span>
+                        <div class="smalltext">Hours</div>
+                    </div>
+                    <div class="container">
+                        <span class="minutes"></span>
+                        <div class="smalltext">Minutes</div>
+                    </div>
+                    <div class="container">
+                        <span class="seconds"></span>
+                        <div class="smalltext">Seconds</div>
+                    </div>
+                </div>
+            </aside>
+            
         </main>
 
         <!-- Page Footer -->        
