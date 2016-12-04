@@ -1,0 +1,27 @@
+h1, h2 {
+	text-align: center;
+}
+
+
+
+.groups {
+	width: 24%;
+	padding: 2%;
+	display: inline-block;
+	vertical-align: top;
+	
+}
+
+ul {
+	margin-bottom: 1em;
+}
+
+li {
+	padding-top: 0.25em;
+	padding-bottom: 0.25em;
+}
+
+li a {
+	text-decoration: none;
+}
+
