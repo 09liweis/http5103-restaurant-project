@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<!-- Summary: Contest Page with a rigged contest -->
+<!-- Comment: Contest HTML Page                  -->
+<!-- Created: by Irfaan Auhammad on 22-Nov-2016  -->
+
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Restaurant - Contest</title>
+        <!-- CSS files -->
+        <link rel="stylesheet" href="css/common.css">
+        <link rel="stylesheet" href="css/contest.css"> 
+    </head>
+    <body id="contact-us">
+        <!-- Page Header -->
+        <header id="header"></header>
+        
+        <!-- Main content -->
+        <main id="main">
+        <div class="wrapper">
+            
+            <h1>Win gift vouchers with our Lucky Stars contest</h1>
+            
+            <!-- Main game area on the screen -->
+            <div id="cards-canvas">
+                <canvas id="myCanvas" width="552" height="444" style="border:1px solid #d3d3d3;">
+                    Your browser does not support the HTML5 canvas to play this game.
+                </canvas>
+                
+                <div id="userInfo" class="invisible">Aww. You got busted! Try your luck in the next round ...</div>
+                <div id="roundInfo" class="invisible">Good Luck! Try # <span id="try-number">0</span></div>
+            </div>
+            
+            <!-- Score Panel of the game -->
+            <div id="score-panel">
+                <h2>Your Game Status</h2>
+                
+                <!-- Display number of attempts left to the user -->
+                <div id="attempts">Attempts Left: <span id="attempt-left">3</span></div>
+                
+                <!-- Number of bronze stars collected -->
+                <div class="star-label">Bronze: <span class="num-collected" id=bronze>0</span>/3 - <span class="prize">Win $25</span></div>
+                <div id="bronze-stars" class="collected-cards">
+                    <div><img id="bronze1" src="images/contest/bronzeStar.png" alt="Bronze Star" /></div>
+                    <div><img id="bronze2" src="images/contest/bronzeStar.png" alt="Bronze Star" /></div>
+                    <div><img id="bronze3" src="images/contest/bronzeStar.png" alt="Bronze Star" /></div>
+                </div>
+                
+                <!-- Number of silver stars collected -->
+                <div class="star-label">Silver: <span class="num-collected" id=silver>0</span>/4 - <span class="prize">Win $50</span></div>
+                <div id="silver-stars" class="collected-cards">
+                    <div><img id="silver1" src="images/contest/silverStar.png" alt="Silver Star" /></div>
+                    <div><img id="silver2" src="images/contest/silverStar.png" alt="Silver Star" /></div>
+                    <div><img id="silver3" src="images/contest/silverStar.png" alt="Silver Star" /></div>
+                    <div><img id="silver4" src="images/contest/silverStar.png" alt="Silver Star" /></div>
+                </div>
+                
+                <!-- Number of gold stars collected -->
+                <div class="star-label">Gold: <span class="num-collected" id=gold>0</span>/5 - <span class="prize">Win $100</span></div>
+                <div id="gold-stars" class="collected-cards">
+                    <div><img id="gold1" src="images/contest/goldStar.png" alt="Gold Star" /></div>
+                    <div><img id="gold2" src="images/contest/goldStar.png" alt="Gold Star" /></div>
+                    <div><img id="gold3" src="images/contest/goldStar.png" alt="Gold Star" /></div>
+                    <div><img id="gold4" src="images/contest/goldStar.png" alt="Gold Star" /></div>
+                    <div><img id="gold5" src="images/contest/goldStar.png" alt="Gold Star" /></div>
+                </div>
+                
+                <!-- Number of angry birds collected -->
+                <div class="star-label">Busted: <span class="num-collected" id=bomb>0</span>/5</div>
+                <div id="bombs" class="collected-cards">
+                    <div><img id="bomb1" src="images/contest/bomb.png" alt="Angry Bird Bomb" /></div>
+                    <div><img id="bomb2" src="images/contest/bomb.png" alt="Angry Bird Bomb" /></div>
+                    <div><img id="bomb3" src="images/contest/bomb.png" alt="Angry Bird Bomb" /></div>
+                    <div><img id="bomb4" src="images/contest/bomb.png" alt="Angry Bird Bomb" /></div>
+                    <div><img id="bomb5" src="images/contest/bomb.png" alt="Angry Bird Bomb" /></div>
+                </div>
+                
+                <!-- Game controls -->
+                <div id="btn_controls">
+                    <button id="btn_newGame" class="button" type="button" value="button">New Game</button>
+                    <button id="btn_newRound" class="button" type="button" value="button">New Round</button>
+                </div>
+            </div>
+            
+            <!-- Contains all the pictures that are being used by the canvas -->
+            <div id="usedImages" class="hidden">
+                <img id="minions" src="images/contest/minions.png" alt="The Minions" />
+            </div>
+		
+        </div>
+        </main>
+
+        <!-- Page Footer -->
+        <footer id="footer"></footer>
+        
+        <!-- JavaScript files -->
+        <script src="js/common.js"></script>
+        <script src="js/contest.js"></script>
+    </body>
+</html>

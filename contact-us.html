@@ -1,39 +1,48 @@
 <!DOCTYPE html>
+<!-- Summary: Contact Us form, Business hours & Clients review  -->
+<!-- Comment: Contact Us HTML Page                              -->
+<!-- Created: by Irfaan Auhammad on 13-Nov-2016                 -->
+
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
-        <title>Restaurant - Locations</title>
+        <title>Restaurant - Contact Us</title>
+        <!-- CSS files -->
         <link rel="stylesheet" href="css/common.css">
-        <!-- Replace with your css for the page -->
         <link rel="stylesheet" href="css/contact-us.css"> 
     </head>
     <body id="contact-us">
-        <header id="header">
-        </header>
+        <!-- Page Header -->
+        <header id="header"></header>
+        
+        <!-- Main content -->
+        <main id="main">
         <div class="wrapper">
-            <main id="main">
-                <h2>Contact Us</h2>
+            <h1>Contact Us</h1>
+            <!-- Left column -->
+            <div id="col-form">
                 <p>Send us an email using the form below.</p>
+                <!-- Contact us form -->
                 <form id="contact-form" name="contact_form" action="#" method="post">
                     <div>
                         <div><label for="name">Your Name<span class="field-required">&nbsp;*</span></label></div>
-                        <div><input type="text" id="name" name="sender_name" placeholder="Enter your name here ..." /></div>
+                        <div><input type="text" id="name" name="sender_name" placeholder="Enter your name here ..." class="form-input" /></div>
                         <div id="no-name" class="validation-error">Please enter a name.</div>
                     </div>
                     <div>
                         <div><label for="email">Email Address<span class="field-required">&nbsp;*</span></label></div>
-                        <div><input type="text" id="email" name="sender_email" placeholder="Enter your email here ..." /></div>
+                        <div><input type="text" id="email" name="sender_email" placeholder="Enter your email here ..." class="form-input" /></div>
                         <div id="no-email" class="validation-error">Please enter an email address.</div>
                     </div>
                     <div>
                         <div><label for="phone">Phone Number</label></div>
-                        <div><input type="text" id="phone" name="sender_phone" placeholder="123 685 7780" /></div>
+                        <div><input type="text" id="phone" name="sender_phone" placeholder="647 685 9999" class="form-input" /></div>
                         <div id="wrong-phone" class="validation-error">Please enter a valid phone number.</div>
                     </div>
                     <div>
                         <div><label for="location">Location this pertains to</label></div>
                         <div>
-                            <select id="location" name="resto_location">
+                            <select id="location" name="resto_location" class="form-input">
                                 <option value="no-resto">-- Choose location --</option>
                                 <option value="resto01">Location 01</option>
                                 <option value="resto02">Location 02</option>
@@ -46,21 +55,24 @@
                     </div>
                     <div>
                         <div><label for="subject">Subject<span class="field-required">&nbsp;*</span></label></div>
-                        <div><input type="text" id="subject" name="message_subject" placeholder="Enter your subject here ..." /></div>
+                        <div><input type="text" id="subject" name="message_subject" placeholder="Enter your subject here ..." class="form-input" /></div>
                         <div id="no-subject" class="validation-error">Please enter a subject.</div>
                     </div>
                     <div>
                         <div><label for="message">Your Message<span class="field-required">&nbsp;*</span></label></div>
-                        <div><textarea id="message" name="sender_message" placeholder="Enter your message here ..." rows="5"></textarea></div>
+                        <div><textarea id="message" name="sender_message" placeholder="Enter your message here ..." rows="5" class="form-input"></textarea></div>
                         <div id="no-msg" class="validation-error">Please enter a message.</div>
                     </div>
-                    <div><button type="submit" name="send-message">Send Message</button></div>
+                    <div><button class="button" type="submit" name="send-message">Send Message</button></div>
                 </form>
                 <div id="validation-error">Unable to submit your message due to some validation errors. <br /> Please review and submit again.</div>
                 <div id="submit-success"></div>
-            </main>
+            </div>
+            
+            <!-- Right column -->
             <aside id="additional-info">
                 <h2 class="hidden">Sidebar informations</h2>
+                <!-- Opening hours section -->
                 <section id="opening-hours">
                     <h3>Business Hours</h3>
                     <table>
@@ -78,19 +90,23 @@
                         </tbody>
                     </table>
                 </section>
+                <!-- Clients review section -->
                 <section id="reviews">
                     <h3>Top 10 Reviews</h3>
                     <div>
-                        <p id="review-text">Here are our top 10 latest reviews ...</p>
-                        <div id="review-sender">From <span id="sender-name">John Doe</span></div>
+                        <p id="review-text-bg"><span id="review-text">Here are our top 10 latest reviews ...</span></p>
+                        <div id="review-sender">From: <span id="sender-name">John Doe</span></div>
                     </div>
                 </section>
             </aside>
         </div>
-        <footer id="footer">
-        </footer>
+        </main>
+
+        <!-- Page Footer -->
+        <footer id="footer"></footer>
+        
+        <!-- JavaScript files -->
         <script src="js/common.js"></script>
-        <!-- Replace with your js for the page -->
         <script src="js/contact-us.js"></script>
     </body>
 </html>

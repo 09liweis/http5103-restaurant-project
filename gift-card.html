@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<!-- Summary: Gift card order page              -->
+<!-- Comment: Gift card order page              -->
+<!-- Created: by Irfaan Auhammad on 21-Nov-2016 -->
+
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Restaurant - Gift Card</title>
+        <link rel="stylesheet" href="css/common.css">
+        <!-- CSS files -->
+        <link rel="stylesheet" href="css/gift-card.css"> 
+    </head>
+    <body id="gift-card">
+        <!-- Page Header -->
+        <header id="header"></header>
+        
+        <!-- Main content -->
+        <main id="main" class="wrapper">
+            <!-- Gift card order form -->
+            <div id="main-content">
+                <section id="gift-card-intro">
+                    <h1>Order Your Gift Card Here</h1>
+                    <p>To order your Gift Cards, you simply have to fill out the form below. A gift card specialits will contact you within 2 business days to finalise your order and obtain your credit card payment information. The method of payment for online orders is Visa&reg;, MasterCard&reg;, American Express&reg;, electronic funds transfer or cheque. Please do not provide your credt card number on the online order form.</p>
+                </section>
+            
+                <form id="gc-form" name="gift_card_form" action="#" method="post">
+                <!-- Preview section of selected card -->
+                <section id="preview-card">
+                    <h2>Write a note to go with your egift card</h2>
+                    <div id="card-preview"><img src="images/gift-cards/Gift-card-01.png" alt="Preview of selected gift card" /></div>
+                    <div id="message-box">
+                        <textarea id="personal-msg" name="message" rows="11" placeholder="This is your chance to tell them how you feel" class="form-input"></textarea>
+                    </div>
+                </section>
+                
+                <!-- Available designs section -->
+                <section id="designs">
+                    <h2>Choose your design</h2>
+                    <div id="gift-cards-selection">
+                        <span class="selected-card">
+                            <img src="images/gift-cards/Gift-card-01.png" alt="Gift card 01" class="selected" />
+                        </span>
+                        <span class="">
+                            <img src="images/gift-cards/Gift-card-02.png" alt="Gift card 02" />
+                        </span>
+                        <span class="">
+                            <img src="images/gift-cards/Gift-card-03.png" alt="Gift card 03" />
+                        </span>
+                    </div>
+                </section>
+            
+                <!-- Gift card amount section -->
+                <section id="gift-amount">
+                    <h2>Select the amount you want to gift</h2>
+                    <div id="amount-err" class="validation-error"></div>
+                    <div id="input-amount">
+                        <span class="required-field">*</span>
+                        <span class="currency">CAD $</span>
+                        <input type="text" id="gc-amount" name="gift-card-amount" placeholder="000" class="form-input" />
+                        <span class="decimal">.00</span>
+                    </div>
+                    <div id="select-amount">
+                        <ul id="predefined-amount">
+                            <li id="amount-25">$ <span>25</span></li>
+                            <li id="amount-50">$ <span>50</span></li>
+                            <li id="amount-100">$ <span>100</span></li>
+                        </ul>
+                    </div>
+                    <div class="instructions">Enter an amount between <span class="allowed-amt">$10</span> - <span class="allowed-amt">$250</span> CAD</div>
+                </section>
+            
+                <!-- Form to fill in with purchaser's details -->
+                <section id="order-details">
+                    <h2>Provide the following details to complete your order</h2>
+
+                    <h3>To</h3>
+                    <!-- Recipient's Name-->
+                    <div class="labelling"><span class="required-field">*</span><label for="r_name"> Recipient's Name</label></div>
+                    <div><input type="text" id="r_name" name="recipient_name" placeholder="Mum, Bob, Nickname" class="form-input" /></div>
+                    <div><span id="no_r_name" class="validation-error"> Please enter the recipient's name.</span></div>
+                    
+                    <!-- Recipient's email-->
+                    <div class="labelling"><span class="required-field">*</span><label for="r_mail"> Recipient's Email Address</label></div>
+                    <div><input type="text" id="r_email" name="recipient_email" placeholder="myfriend@email.com" class="form-input" /></div>
+                    <div><span id="no_r_email" class="validation-error"> Please provide the recipient's email.</span></div>
+
+                    <h3>From</h3>
+                    <!-- Purchaser's Name -->
+                    <div class="labelling"><span class="required-field">*</span><label for="p_name"> Purchaser's Name</label></div>
+                    <div><input type="text" id="p_name" name="purchaser_name" placeholder="Dad, Johnny, Nickname" class="form-input" /></div>
+                    <div><span id="no_p_name" class="validation-error"> Please enter your name.</span></div>
+                    
+                    <!-- Purchaser's email -->
+                    <div class="labelling"><span class="required-field">*</span><label for="p_email"> Purchaser's Email Address</label></div>
+                    <div><input type="text" id="p_email" name="purchaser_email" placeholder="myown@email.com" class="form-input" /></div>
+                    <div><span id="no_p_email" class="validation-error"> Please provide your email.</span></div>
+                    
+                    <!-- Purchaser's Address 1 -->
+                    <div class="labelling"><span class="required-field">*</span><label for="p_add1"> Purchaser's Address 1</label></div>
+                    <div><input type="text" id="p_add1" name="purchaser_add1" placeholder="Street name 1" class="form-input" /></div>
+                    <div><span id="no_p_add1" class="validation-error"> Please enter an address.</span></div>
+                    
+                    <!-- Purchaser's Address 2 -->
+                    <div class="labelling"><label for="p_add2">Address Line 2</label></div>
+                    <div><input type="text" id="p_add2" name="purchaser_add2" placeholder="Streen name 2" class="form-input" /></div>
+                    
+                    <!-- Purchaser's City -->
+                    <div class="labelling"><span class="required-field">*</span><label for="p_city"> City</label></div>
+                    <div><input type="text" id="p_city" name="purchaser_city" placeholder="City" class="form-input" /></div>
+                    <div><span id="no_p_city" class="validation-error"> Please enter a city.</span></div>
+                    
+                    <!-- Purchaser's Province -->
+                    <div class="labelling"><span class="required-field">*</span><label for="p_prov"> Province</label></div>
+                    <div>
+                        <select id="p_prov" name="purchaser_prov" class="form-input">
+                            <option value="no_prov">-- Choose --</option>
+                            <option value="AB">Alberta</option>
+                            <option value="BC">British Columbia</option>
+                            <option value="MB">Manitoba</option>
+                            <option value="NB">New Burnswick</option>
+                            <option value="NL">Newfoundland and Labrador</option>
+                            <option value="NS">Nova Scotia</option>
+                            <option value="NT">Northwest Territories</option>
+                            <option value="NU">Nuvavut</option>
+                            <option value="ON">Ontario</option>
+                            <option value="PE">Prince Edward Island</option>
+                            <option value="QC">Quebec</option>
+                            <option value="SK">Saskatchewan</option>
+                            <option value="YT">Yukon</option>
+                        </select>
+                    </div>
+                    <div><span id="n_p_prov" class="validation-error"> Please select a province.</span></div>
+                    
+                    <!-- Purchaser's Postal Code -->
+                    <div class="labelling"><span class="required-field">*</span><label for="p_pc"> Purchaser's Postal Code</label></div>
+                    <div><input type="text" id="p_pc" name="purchaser_pc" placeholder="e.g. A1A 2B2" class="form-input" /></div>
+                    <div><span id="no_p_pc" class="validation-error"> Please enter your postal code.</span></div>
+                    
+                    <!-- Purchaser's Phone Number -->
+                    <div class="labelling"><span class="required-field">*</span><label for="p_pn"> Phone Number</label></div>
+                    <div><input type="text" id="p_pn" name="purchaser_pn" placeholder="e.g. 647 555 0000" class="form-input" /></div>
+                    <div><span id="no_pn" class="validation-error"> Please provide a phone number.</span></div>
+                    
+                </section>
+                
+                <!-- Submit & reset buttons -->
+                <div id="form-buttons">
+                    <button type="submit" id="sub_button" name="f_submit" class="button">Submit Order</button>
+                    <button type="reset" id="res_button" name="f_reset"  class="button">Reset Order</button>
+                </div>
+                    
+                <div id="validation-error">
+                    Unable to submit your message due to some validation errors.<br />
+                    Please review and submit again.
+                </div>
+                </form>
+            </div>
+            
+            <!-- Gift card order summary -->
+            <section id="order-summary">
+                <h2>Your Order</h2>
+                <div id="order-success"></div>
+                <div id="gift-card-summary">
+                    <div id="choosen-gift-card">
+                        <img src="images/gift-cards/Gift-card-01.png" alt="Your choosen gift card" />
+                    </div>
+                    <div id="choosen-amount">Card Amount: $<span id="your-amount">00</span>.00 CAD</div>
+                    <div id="modify-order">
+                        <ul>
+                            <li id="edit-order"><a href="#" title="Edit your order">Edit</a></li>
+                            <li id="cancel-order"><a href="#" title="Cancel your order">Cancel</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div id="order-details-summary">
+                    <div class="flex-container">
+                        <div><strong>Email Delivery</strong></div>
+                        <div>Order Date: <span id="order-date">16 Nov 2016</span></div>
+                    </div>
+                    <div class="flex-container">
+                        <div>To: <span id="recipient-name">John Doe</span></div>
+                        <div id="recipient-email">test@email.com</div>
+                    </div>                  
+                </div>
+                <div id="total-amount" class="flex-container">
+                    <div>Total Value:</div>
+                    <div>$<span id="amount-due">50.00</span> CAD</div>
+                </div>
+                <div id="confirmTheOrder"><button type="button" id="btn_ok" class="button">OK</button></div>
+            </section>
+            
+            <!-- Side bar with countdown to new year -->
+            <aside id="coundDownTimer">
+                <div id="clockdiv">
+                    <h2 class="sidebar">Happy New Year <span class="newYear"></span></h2>
+                    <div class="container">
+                        <span class="days"></span>
+                        <div class="smalltext">Days</div>
+                    </div>
+                    <div class="container">
+                        <span class="hours"></span>
+                        <div class="smalltext">Hours</div>
+                    </div>
+                    <div class="container">
+                        <span class="minutes"></span>
+                        <div class="smalltext">Minutes</div>
+                    </div>
+                    <div class="container">
+                        <span class="seconds"></span>
+                        <div class="smalltext">Seconds</div>
+                    </div>
+                </div>
+            </aside>
+            
+        </main>
+
+        <!-- Page Footer -->        
+        <footer id="footer"></footer>
+        
+        <!-- JavaScript files -->        
+        <script src="js/common.js"></script>
+        <script src="js/gift-card.js"></script>
+    </body>
+</html>
