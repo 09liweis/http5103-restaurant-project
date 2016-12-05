@@ -1,3 +1,7 @@
+/*-- Summary: Contact Us form, Business hours & Clients review  --*/
+/*-- Comment: Contact Us CSS File                               --*/
+/*-- Created: by Irfaan Auhammad on 13-Nov-2016                 --*/
+
 /* Border box property */
 /* ------------------- */
 html {
@@ -16,21 +20,21 @@ html {
     left: -10000px;
 }
 
-#contact-us main, #contact-us aside {
-    color: #000000;
-    margin-top: 1em;
-    padding: 1em 1em;
-}
-
-#main {
+#col-form {
     display: inline-block;
     margin-right: -4px;
-    width: 65%;
+    width: 60%;
 }
 
 #additional-info {
-    float: right;
-    width: 35%;
+    display: inline-block;
+    width: 30%;
+    margin-top: 1em;
+    margin-left: 10%;
+}
+
+#col-form, #additional-info {
+    vertical-align: top;
 }
 
 h2 {
@@ -40,8 +44,7 @@ h2 {
 
 /* Contact form */
 /* ------------ */
-#main p {
-    font-style: italic;
+#col-form p {
     color: #23272c;
     margin-top: 1em;
     font-size: 1.25em;
@@ -56,44 +59,26 @@ form > div {
 }
 
 label {
-    font-size: 1.25em;
-    color: #23272c;
+    margin-bottom: 4px;
 }
 
 .field-required, #validation-error {
     color: crimson;
 }
 
-input, textarea, select {
-    border: 1px solid #23272c;
-    font-size: 1em;
-    width: 60%;
+input, select {
+    width: 60% !important;
     padding: 0.75em 0.75em;
-    border-radius: 5px;
 }
 
 textarea {
-    width: 75%;
-    font-size: 1.3em;
+    width: 75% !important;
+    padding: 0.75em 0.75em;
 }
 
 .validation-error, #validation-error {
     color: orangered;
     display: none;
-}
-
-button {
-    border: none;
-    font-weight: bold;
-    padding: 10px 10px;
-    text-align: center;
-    font-size: 1.5em;
-    cursor: pointer;
-    border-radius: 5px;
-    text-decoration: none;
-    background-color: #23272c;
-    color: white;
-    box-shadow: 3px 3px 6px 0 rgba(0,0,0,0.3);
 }
 
 #submit-success {
@@ -109,10 +94,9 @@ button {
 #additional-info section {
     margin-bottom: 1em;
     padding: 0.5em 0.5em;
-    background-color: #21b0d1;
-    color: white;
+    background: rgba(0,0,0,0.46);
+    color: #ffb606;
     border: 1px solid #23272c;
-    opacity: 0.9;
 }
 
 h3 {
@@ -121,10 +105,13 @@ h3 {
     padding: 0.5em 0;
     border-bottom: 4px double white;
     margin-bottom: 0.5em;
+    letter-spacing: 1px;
 }
 
 #opening-hours table {
     margin: 0 auto;
+    color: #fff;
+    letter-spacing: 1px;
 }
 
 tr td:first-child {
@@ -135,10 +122,9 @@ tr td:last-child {
     text-align: right;
 }
 
-#review-text {
+#review-text-bg {
     background-color: white;
     color: #23272c;
-    font-style: italic;
     padding: 0.5em 0.5em;
     border-radius: 5px;
     margin-bottom: 4px;
@@ -151,10 +137,5 @@ tr td:last-child {
 }
 
 #sender-name {
-    color: #23272c;
     font-style: italic;
-}
-
-#footer {
-    clear: both;
 }

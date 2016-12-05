@@ -94,9 +94,11 @@ a:hover {
     transition: all 0.5s;
     font-size: 1.25rem;
     border: none;
+    text-align: center;
+    /*box-shadow: 3px 3px 6px 0 rgba(0,0,0,0.3);  TO CONFIRM?? */
 }
 
-.button:hover {
+.button:hover:enabled {
     background: #2a2a2a;
     color: #ffffff;
 }
