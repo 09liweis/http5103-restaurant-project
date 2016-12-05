@@ -68,6 +68,11 @@ function initMap() {
         scrollwheel: false,
     });
     
+    //click on map to close all the open window info
+    map.addListener('click', function() {
+        closeOtherInfos();
+    });
+    
     //set markers for restaurants
     restaurants.map(function(r) {
         var marker = new google.maps.Marker({
@@ -120,6 +125,7 @@ window.onload = function() {
     })
 }
 
+// function to close all the open infowindow
 function closeOtherInfos() {
     var numInfos = infos.length;
     for (var i = 0; i < numInfos; i++) {
