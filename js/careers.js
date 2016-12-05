@@ -13,7 +13,9 @@ window.onload=startScript;
 function startScript(){
 	appCareers = new CareersApp();
 	appCareers.display();
-	console.log(appCareers);
+
+	if(/^\?target=(\d)+$/.test(location.search))   // TEST FOR SEARCH STRING
+		$('.career-item[value="'+location.search.replace( /^\D+/g, '')+'"]').click();
 }
 
 //CAREERS DISPLAY OBJECT
@@ -107,19 +109,13 @@ function CareersApp(){
 				tempColor=$(this).css("color");
 				$(this).css("color",$(this).css("background-color"));
 				$(this).css("background-color",tempColor);
-				console.log("IN");
 			},
 			function(){
 				tempColor=$(this).css("color");
 				$(this).css("color",$(this).css("background-color"));
 				$(this).css("background-color",tempColor);
-				console.log("OUT");
 			}
 			);
-		function  changeColors(elemant)
-		{
-
-		}
 		$('.career-item').bind("click", function()
 			{
 				$("#careers-desc").hide();
@@ -127,17 +123,15 @@ function CareersApp(){
 				$("#careers-desc").css({"width":"45%","background":"#fff"});
 				$("#apply-form").css({"width":"30%","background":"#fff"});
 
-				console.log("IN0000");
 				$('.career-item').css({"background-color":"#fff"});
 				$('.career-item').css({"color":"#666"});
-				console.log("Out0000");
-				
 
 				$("#apply-form").show(1000);
 				$("#careers-desc").show(1000);
 
 				var typeIn=this.value;
 				var curChoise=$.grep(careers, function(e){ return e.type === typeIn; }).pop();
+				history.pushState(null,"", 'careers.html?target='+typeIn);
 				$("#careers-desc").html('<h2>'+curChoise.name+'</h2>');
 				$("#careers-desc").append('<p>'+curChoise.desc+'</p>');
 				$("#careers-desc").append('<img src="'+curChoise.img+'" alt="Image of '+curChoise.name+'"/>');
@@ -187,6 +181,7 @@ function CareersApp(){
 	//HIDE everything
 	this.clearAll=function(){
 		document.getElementById(this.applicationContainerId).innerHTML='';
+		careers=[];
 	};
 	//CREATING HTML ELEMENTS
 	this.initBlocks=function (){ 
@@ -317,5 +312,4 @@ function CareersApp(){
 
 	    this.state=1;
 		};
-
 }
