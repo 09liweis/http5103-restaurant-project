@@ -1,4 +1,5 @@
 var map;
+//list of restaurants
 var restaurants = [
     {
         name: 'restaurant-1',
@@ -56,16 +57,18 @@ var restaurants = [
     },
 ];
 
-var college = {lat: 43.7283324, lng: -79.6079205}
+var center = {lat: 43.7283324, lng: -79.6079205}
 var markers = [];
 var infos = [];
+//map initialization
 function initMap() {
     map = new google.maps.Map(document.getElementById('map'), {
-        center: college,
+        center: center,
         zoom: 15,
         scrollwheel: false,
     });
     
+    //set markers for restaurants
     restaurants.map(function(r) {
         var marker = new google.maps.Marker({
             position: {lat: r.lat, lng: r.lng},
@@ -75,6 +78,7 @@ function initMap() {
         
         markers.push(marker);
         
+        //set info window for restaurants on map
         var info = new google.maps.InfoWindow({
             content: '<div class="res-popup">' +
                         '<div class="res-image"><img src="' + r.photo + '" /></div>' +
@@ -88,6 +92,7 @@ function initMap() {
         
         infos.push(info);
         
+        // restaurant markers click to show info window
         marker.addListener('click', function() {
             closeOtherInfos();
             info.open(map, this);
@@ -102,16 +107,16 @@ window.onload = function() {
         $('#show-map').addClass('active');
         $('#show-list').removeClass('active');
         
-        $('#map').show('slow');
-        $('#res-list').hide('slow');
+        $('#map').show('fast');
+        $('#res-list').hide('fast');
     });
     
     $('#show-list').click(function() {
         $('#show-map').removeClass('active');
         $('#show-list').addClass('active');
         
-        $('#map').hide('slow');
-        $('#res-list').show('slow');
+        $('#map').hide('fast');
+        $('#res-list').show('fast');
     })
 }
 
@@ -122,6 +127,7 @@ function closeOtherInfos() {
     }
 }
 
+//render restaurants 
 function renderRestaurants(restaurants, options) {
     var reshtml = '';
     restaurants.map(function(r) {
@@ -131,6 +137,7 @@ function renderRestaurants(restaurants, options) {
     return reshtml;
 }
 
+//render single restaurant
 function renderRes(res) {
     return '<div class="restaurant col">'+
                 '<div class="res-image">' +
