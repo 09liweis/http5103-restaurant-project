@@ -1,11 +1,9 @@
 /* Slideshow container */
 #specialsContainer {
   max-width: 1000px;
+  min-height: 500px;
   position: relative;
   margin: auto;
-}
-img {
-  width: 100%;
 }
 /* Next & previous buttons */
 #prev, #next {
@@ -33,13 +31,24 @@ img {
   background-color: rgba(0,0,0,0.8);
 }
 
+#slideArea {
+  position: relative;
+  height: 500px;
+  overflow: hidden;
+}
+
+#slideArea img {
+  width: 100%;
+  height: 500px;
+}
 /* Caption text */
 .text {
-  color: #f2f2f2;
-  font-size: 15px;
+  color: #f2f2f2; 
+  background: rgba(0,0,0,0.46);
+  font-size: 24px;
   padding: 8px 12px;
   position: absolute;
-  bottom: 8px;
+  bottom: 0;
   width: 100%;
   text-align: center;
 }
@@ -49,6 +58,7 @@ img {
   color: #f2f2f2;
   font-size: 12px;
   padding: 8px 12px;
+  background: rgba(0,0,0,0.46);
   position: absolute;
   top: 0;
 }
@@ -64,6 +74,65 @@ img {
   -webkit-animation-duration: 1.5s;
   animation-name: fade;
   animation-duration: 1.5s;
+}
+
+#nextWeek,#prevWeek{
+  background: rgba(0,0,0,0.46);
+  height: 500px;
+  overflow: hidden;
+}
+#nextWeek li,#prevWeek li {
+  padding: 0.1em 1em;
+}
+#nextWeek img,#prevWeek img {
+  width: 90%;
+}
+#timerCountDownBox {
+  text-align: right;
+  font-size: 20px;
+  font-weight: bold;
+  position: absolute; 
+  top: 50px;
+  right: 45px;
+  color: red;
+}
+.book{
+  font-size: 16px;
+  display: inline-block;
+  text-align: center;
+  margin: 1rem 0;
+  background-color: #ffb606;
+  border: none;
+  border-radius: 5px;
+  color: #2a2a2a;
+  padding: 0.5rem 2rem;
+  font-weight: bold; */
+  height: 40px;
+}
+
+
+.col-3 {
+  width: 33%;
+  min-height: 500px;
+  margin: 0;
+  float: left;
+  position: relative; 
+}
+
+.col-3 h3 {
+  font-size: 1.4em;
+  text-transform: uppercase;
+  margin: 0 3px;
+}
+.col-3 h2 {
+  font-size: 2em;
+  text-transform: uppercase;
+  margin: 1rem;
+}
+.col-3 p {
+  font-size: 1em;
+  color: #a3a2a2;
+  font-weight: bold;
 }
 
 @-webkit-keyframes fade {
