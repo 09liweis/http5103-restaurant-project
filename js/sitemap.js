@@ -12,7 +12,7 @@ $(document).ready(function(){
 	/* It performs a simple animation of moving the text "redirecting..." by 5px to the right
 	   on the current page before redirecting the user to another page after a user clicks a link.
 	 */
-	$("a").click(function(e){
+	$(".group a").click(function(e){
 		e.preventDefault();
 		var href = $(this).attr("href");
 		var message = "redirecting..."
