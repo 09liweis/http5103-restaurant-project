@@ -13,7 +13,7 @@
 
 .col-3 h3 {
   font-size: 1.5em;
-  text-transform: uppercase;
+  font-weight: bold;
   margin: 0;
 }
 .col-3 h2 {
@@ -22,9 +22,7 @@
   margin: 1rem;
 }
 .col-3 p {
-  font-size: 1em;
-  color: #a3a2a2;
-  font-weight: bold;
+  font-size: 1.35em;
 }
 .career-item{
   padding: 0.75rem;
@@ -33,7 +31,11 @@
   border-radius: 0.5rem;
 }
 
-
+#careers-desc img {
+  width: 100%;
+  max-height: 300px;
+  padding: 10px;
+}
 #sendmsg label{
   font-size: 1.125em;
 }
