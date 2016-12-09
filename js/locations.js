@@ -8,7 +8,7 @@ var restaurants = [
         address: 'somewhere',
         photo: 'images/locations/city-restaurant-lunch-outside.jpg',
         cost: '$$',
-        rating: 8
+        rating: '5'
     },
     {
         name: 'restaurant-2',
@@ -17,7 +17,7 @@ var restaurants = [
         address: 'somewhere',
         photo: 'images/locations/dinner-meal-table-wine.jpg',
         cost: '$$',
-        rating: 8
+        rating: '4.5'
     },
     {
         name: 'restaurant-3',
@@ -26,7 +26,7 @@ var restaurants = [
         address: 'somewhere',
         photo: 'images/locations/food-salad-restaurant-person.jpg',
         cost: '$$',
-        rating: 8
+        rating: '4.8'
     },
     {
         name: 'restaurant-4',
@@ -35,7 +35,7 @@ var restaurants = [
         address: 'somewhere',
         photo: 'images/locations/menu-restaurant-vintage-table.jpg',
         cost: '$$',
-        rating: 8
+        rating: '4.3'
     },
     {
         name: 'restaurant-5',
@@ -44,7 +44,7 @@ var restaurants = [
         address: 'somewhere',
         photo: 'images/locations/pexels-photo-30503.jpg',
         cost: '$$',
-        rating: 8
+        rating: '4.7'
     },
     {
         name: 'restaurant-1',
@@ -53,7 +53,7 @@ var restaurants = [
         address: 'somewhere',
         photo: 'images/locations/red-lunch-green-knolling.jpg',
         cost: '$$',
-        rating: 8
+        rating: '4.8'
     },
 ];
 
@@ -106,23 +106,36 @@ function initMap() {
 }
 
 window.onload = function() {
+    
     $('#res-list').html(renderRestaurants(restaurants));
     
+    if (location.search === '?list') {
+        showList();
+    }
+    
     $('#show-map').click(function() {
-        $('#show-map').addClass('active');
-        $('#show-list').removeClass('active');
-        
-        $('#map').show('fast');
-        $('#res-list').hide('fast');
+        showMap()
     });
     
     $('#show-list').click(function() {
-        $('#show-map').removeClass('active');
-        $('#show-list').addClass('active');
-        
-        $('#map').hide('fast');
-        $('#res-list').show('fast');
+        showList();
     })
+}
+
+function showMap() {
+    $('#show-map').addClass('active');
+    $('#show-list').removeClass('active');
+    
+    $('#map').show('fast');
+    $('#res-list').hide('fast');
+}
+
+function showList() {
+    $('#show-map').removeClass('active');
+    $('#show-list').addClass('active');
+    
+    $('#map').hide('fast');
+    $('#res-list').show('fast');
 }
 
 // function to close all the open infowindow
@@ -150,10 +163,23 @@ function renderRes(res) {
                     '<img src="' + res.photo + '" />' +
                 '</div>' +
                 '<div class="res-info">' +
-                    '<h3>' + res.name + '</h3>' +
-                    '<p>Rating: ' + res.rating + '</p>' +
-                    '<p>Cost: ' + res.cost + '</p>' +
-                    '<p>Address: ' + res.address + '</p>' +
+                    '<h3 class="res-title">' + res.name + '</h3>' +
+                    '<p>Rating: ' + renderRating(res.rating) + '</p>' +
+                    '<p><span class="fa fa-dollar"></span>' + res.cost + '</p>' +
+                    '<p><span class="fa fa-location-arrow"></span>' + res.address + '</p>' +
                 '</div>' +
             '</div>'
+}
+
+function renderRating(rate) {
+    var array = rate.split('.');
+    var int = parseInt(array[0]);
+    var ratings = ''
+    for (var i = 0; i < int; i++) {
+        ratings += '<span class="fa fa-star"></span>';
+    }
+    if (array.length > 1) {
+        ratings += '<span class="fa fa-star-half"></span>';
+    }
+    return ratings;
 }
