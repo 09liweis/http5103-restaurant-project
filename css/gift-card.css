@@ -36,9 +36,9 @@ a {
 
 #coundDownTimer {
     display: inline-block;
-    width: 37%;
+    width: 27%;
     height: auto;
-    margin-left: 3%;
+    margin-left: 2%;
     position: fixed;
 }
 
