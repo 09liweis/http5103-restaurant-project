@@ -16,6 +16,7 @@ html {
 /* ---------------- */
 h1 {
     margin-bottom: 0.5em;
+    text-align: center;
 }
 
 body {
@@ -50,6 +51,7 @@ body {
 	margin-right: -4px;
 	padding: 0 1em;
 	position: relative;
+    margin-left: 6%;
 }
 
 #userInfo {
@@ -88,15 +90,14 @@ body {
 
 #myCanvas {
 	background-color: #ffb606;
-	margin-top: 0.8em;
 }
 
 #score-panel {
 	display: inline-block;
 	border: 1px solid #23272c;
 	width: 25%;
-	margin-left: 5%;
-	margin-right: 10%;
+	margin-left: 2%;
+	margin-right: 7%;
     color: #23272c;
 	background-color: #21b0d1;
 	opacity: 0.9;

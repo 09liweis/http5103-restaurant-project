@@ -13,7 +13,7 @@ document.head.appendChild(jQuery);
 
 var navs = [
     {
-        link: '/',
+        link: 'index.html',
         name: 'home',
     },
     {
@@ -66,7 +66,7 @@ for (var i = 0; i < navs.length; i++) {
 var header = document.getElementById('header');
 header.innerHTML = '<div class="wrapper">' +
                         '<div class="col" id="logo">' +
-                            '<h2 id="logo-text">Restaurant</h2>' +
+                            '<h2 id="logo-text">DJT Restaurant</h2>' +
                         '</div>' +
                         '<nav class="col" id="nav">' +
                             '<ul>' +
