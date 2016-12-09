@@ -9,28 +9,28 @@ var events = [
         photo: 'images/events/food-restaurant-fruits-orange.jpg',
     },
     {
-        name: 'Team project celebration',
-        date: '2016-12-15',
-        startTime: '2:00pm',
-        endTime: '6:00pm',
+        name: 'JS Final Exam celebration',
+        date: '2016-12-14',
+        startTime: '8:00pm',
+        endTime: '10:00pm',
         description: 'Event description',
-        photo: 'images/events/pexels-photo-26906.jpg',
+        photo: 'images/events/pexels-photo-92090.jpeg',
     },
     {
         name: 'Exam done celebration',
-        date: '2016-12-12',
+        date: '2016-12-15',
         startTime: '2:00pm',
         endTime: '6:00pm',
         description: 'Event description',
         photo: 'images/events/pexels-photo-27642.jpg',
     },
     {
-        name: 'Digital design Final Project celebration',
-        date: '2016-12-15',
+        name: 'Team project celebration',
+        date: '2016-12-16',
         startTime: '2:00pm',
         endTime: '6:00pm',
         description: 'Event description',
-        photo: 'images/events/pexels-photo-92090.jpeg',
+        photo: 'images/events/pexels-photo-26906.jpg',
     },
     {
         name: 'Sam\'s birthday',
@@ -55,26 +55,38 @@ window.onload = function() {
     renderDate();
     renderTime();
     
+    if (location.search == '?form') {
+        renderForm();
+    }
+    
     //render events
     $('#events-list').html(renderEvents(events));
     
     $('#book-event').click(function() {
-        $('#events-list').hide('fast');
-        $('#eventform').show('fast');
-        $('#book-event').hide('fast');
-        $('#back-to-list').show('fast');
+        renderForm();
     });
     
     $('#back-to-list').click(function() {
-        $('#events-list').show('fast');
-        $('#eventform').hide('fast');
-        $('#back-to-list').hide('fast');
-        $('#book-event').show('fast');
+        renderList();
     });
     
     $('#start-time').change(function() {
         $('#end-time-form').show('fast');
     });
+}
+
+function renderForm() {
+    $('#events-list').hide('fast');
+    $('#eventform').show('fast');
+    $('#book-event').hide('fast');
+    $('#back-to-list').show('fast');
+}
+
+function renderList() {
+    $('#events-list').show('fast');
+    $('#eventform').hide('fast');
+    $('#back-to-list').hide('fast');
+    $('#book-event').show('fast');
 }
 
 //function to render events
@@ -99,7 +111,7 @@ function renderEvent(event) {
                     //'<img src="' + event.photo + '" />' +
                 '</div>' +
                 '<div class="event-info">' +
-                    '<h3>' + event.name + '</h3>' +
+                    '<h3 class="event-title">' + event.name + '</h3>' +
                     '<p><i class="fa fa-calendar"></i>' + event.date + '</p>' +
                     '<p><i class="fa fa-clock-o"></i>' + event.startTime + ' - ' + event.endTime + '</p>' +
                 '</div>' +
@@ -111,7 +123,7 @@ function renderDate() {
     var date = new Date();
     var dates = '<option class="form-input">Please select a date</option>';
     for (var i = date.getDate(); i <= 31; i++) {
-        var value = date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + i;
+        var value = date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + ((i < 10) ? '0' + i: i);
         dates += '<option class="form-input" value="' + value + '">' + value + '</option>';
     }
     $('#date').html(dates);
