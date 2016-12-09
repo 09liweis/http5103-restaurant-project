@@ -35,16 +35,16 @@ var events = [
     {
         name: 'Sam\'s birthday',
         date: '2016-12-16',
-        startTime: '2:00pm',
-        endTime: '6:00pm',
+        startTime: '8:00pm',
+        endTime: '10:00pm',
         description: 'Event description',
         photo: 'images/events/pexels-photo-127431.jpeg',
     },
     {
         name: 'Christmax Party',
         date: '2016-12-25',
-        startTime: '2:00pm',
-        endTime: '6:00pm',
+        startTime: '6:00pm',
+        endTime: '10:00pm',
         description: 'Event description',
         photo: 'images/events/restaurant-coffee-chocolate-dessert.jpg',
     },
@@ -53,7 +53,7 @@ var events = [
 window.onload = function() {
     //render dynamic date and time for event booking
     renderDate();
-    renderTime();
+    renderStartTime();
     
     if (location.search == '?form') {
         renderForm();
@@ -71,7 +71,7 @@ window.onload = function() {
     });
     
     $('#start-time').change(function() {
-        $('#end-time-form').show('fast');
+        renderEndTime();
     });
 }
 
@@ -103,7 +103,9 @@ function renderEvents(events) {
 //function to render single event
 function renderEvent(event) {
     var date = new Date();
-    var format = date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate();
+    var day = (date.getDate() < 10) ? '0' + date.getDate() : date.getDate();
+    var format = date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + day;
+    // compare current date with event date to check expird event
     var expird = (format > event.date) ? '<div class="label">expird</div>' : '';
     return '<div class="event col">' +
                 '<div class="event-image" style="background-image: url(' + event.photo + ')">' +
@@ -130,17 +132,40 @@ function renderDate() {
 }
 
 //function to render future time
-function renderTime() {
+function renderStartTime() {
     var date = new Date();
     var times = '<option>Select start time</option>';
-    for (var h = date.getHours(); h < 24; h++) {
-        var value;
-        if (h < 13) {
-            value = h + ':00am';
-        } else {
-            value = (h - 12) + ':00pm';
-        }
-        times += '<option value="' + value + '">' + value + '</option>';
-    }
+    times += renderTime(date.getHours());
     $('#start-time').html(times);
+}
+
+//function to render dynamic end time
+function renderEndTime() {
+    var start = $('#start-time').val();
+    var times = '<option>Select end time</option>';
+    times += renderTime(parseInt(start) + 1);
+    $('#end-time').html(times);
+    $('#end-time-form').show('fast');
+}
+
+//generate time
+function renderTime(start) {
+    var times;
+    for (var h = start; h < 24; h++) {
+        var value = convert24to12(h)
+        
+        times += '<option value="' + h + '">' + value + '</option>';
+    }
+    return times
+}
+
+//convert 24 hour to 12 hour format
+function convert24to12(h) {
+    var value;
+    if (h < 13) {
+        value = h + ':00am';
+    } else {
+        value = (h - 12) + ':00pm';
+    }
+    return value;
 }
