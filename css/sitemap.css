@@ -1,27 +1,37 @@
-h1, h2 {
-	text-align: center;
-}
-
-
-
-.groups {
-	width: 24%;
-	padding: 2%;
-	display: inline-block;
+.groups div {
+    width: 19%;
+    display: inline-block;
 	vertical-align: top;
-	
 }
 
-ul {
+.groups ul {
 	margin-bottom: 1em;
 }
 
-li {
+.groups li {
 	padding-top: 0.25em;
 	padding-bottom: 0.25em;
 }
 
-li a {
+.groups li a {
 	text-decoration: none;
 }
 
+h3:hover {
+    cursor: pointer;
+}
+
+h1 {
+    margin-bottom: 0.5em;
+}
+
+.groups a {
+    color: #181818;
+    transition: all 0.3s;
+    font-size: 1.125rem;
+}
+
+.groups a:hover {
+    color: #ffb606;
+    text-decoration: underline;
+}
