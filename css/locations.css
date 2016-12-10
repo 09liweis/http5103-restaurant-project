@@ -1,5 +1,5 @@
 #map {
-    width: 100%;
+    width: 70%;
     height: 600px;
 }
 
@@ -29,11 +29,9 @@
 }
 
 #res-list {
-    display: none;
-}
-
-#res-list .col {
     width: 30%;
+    height: 600px;
+    overflow: scroll;
 }
 
 .restaurant {
@@ -41,6 +39,12 @@
     margin-bottom: 30px;
     box-shadow: rgba(0, 0, 0, 0.1) 0 1px 2px 0;
     margin-right: 30px;
+    cursor: pointer;
+    transition: all 1s ease;
+}
+
+.restaurant.active {
+    border: 1px solid #ffb606;
 }
 
 .res-info {

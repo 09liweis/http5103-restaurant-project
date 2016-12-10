@@ -2,6 +2,7 @@ var map;
 //list of restaurants
 var restaurants = [
     {
+        id: 1,
         name: 'restaurant-1',
         lat: 43.7283515,
         lng: -79.6101083,
@@ -11,6 +12,7 @@ var restaurants = [
         rating: '5'
     },
     {
+        id: 2,
         name: 'restaurant-2',
         lat: 43.7279994,
         lng: -79.6071043,
@@ -20,6 +22,7 @@ var restaurants = [
         rating: '4.5'
     },
     {
+        id: 3,
         name: 'restaurant-3',
         lat: 43.7256537,
         lng: -79.6073304,
@@ -29,6 +32,7 @@ var restaurants = [
         rating: '4.8'
     },
     {
+        id: 4,
         name: 'restaurant-4',
         lat: 43.7323522,
         lng: -79.609769,
@@ -38,6 +42,7 @@ var restaurants = [
         rating: '4.3'
     },
     {
+        id: 5,
         name: 'restaurant-5',
         lat: 43.7245555,
         lng: -79.6193396,
@@ -45,15 +50,6 @@ var restaurants = [
         photo: 'images/locations/pexels-photo-30503.jpg',
         cost: '$$',
         rating: '4.7'
-    },
-    {
-        name: 'restaurant-1',
-        lat: 43.7282305,
-        lng: -79.6178161,
-        address: 'somewhere',
-        photo: 'images/locations/red-lunch-green-knolling.jpg',
-        cost: '$$',
-        rating: '4.8'
     },
 ];
 
@@ -79,6 +75,7 @@ function initMap() {
             position: {lat: r.lat, lng: r.lng},
             map: map,
             animation: google.maps.Animation.DROP,
+            id: r.id
         });
         
         markers.push(marker);
@@ -92,13 +89,15 @@ function initMap() {
                         '</div>' +
                      '</div>',
             maxWidth: 400,
-            custom: true
+            custom: true,
+            id: r.id,
         })
         
         infos.push(info);
         
         // restaurant markers click to show info window
         marker.addListener('click', function() {
+            connectResMarker(this.id);
             closeOtherInfos();
             info.open(map, this);
         })
@@ -109,33 +108,26 @@ window.onload = function() {
     
     $('#res-list').html(renderRestaurants(restaurants));
     
-    if (location.search === '?list') {
-        showList();
-    }
-    
-    $('#show-map').click(function() {
-        showMap()
+    //click restaurant to open infowindow on map
+    $('.restaurant').click(function() {
+        var id = $(this).attr('id');
+        connectResMarker(id);
+        closeOtherInfos();
+        var info = findInfowindow(id);
+        var marker = findMarker(id);
+        info.open(map, marker);
     });
-    
-    $('#show-list').click(function() {
-        showList();
-    })
 }
 
-function showMap() {
-    $('#show-map').addClass('active');
-    $('#show-list').removeClass('active');
-    
-    $('#map').show('fast');
-    $('#res-list').hide('fast');
-}
-
-function showList() {
-    $('#show-map').removeClass('active');
-    $('#show-list').addClass('active');
-    
-    $('#map').hide('fast');
-    $('#res-list').show('fast');
+//bind restaurants and markers on map
+function connectResMarker(id) {
+    $('.restaurant').removeClass('active');
+    $('#' + id).addClass('active');
+    var container = $('#res-list');
+    container.animate({
+        //calculate to scroll restaurant
+        scrollTop: $('#' + id).offset().top - container.offset().top + container.scrollTop()
+    }, 1000);
 }
 
 // function to close all the open infowindow
@@ -143,6 +135,24 @@ function closeOtherInfos() {
     var numInfos = infos.length;
     for (var i = 0; i < numInfos; i++) {
         infos[i].close();
+    }
+}
+
+//find marker base on restaurant id
+function findMarker(id) {
+    for (var i = 0; i < markers.length; i++) {
+        if (id == markers[i].id) {
+            return markers[i];
+        }
+    }
+}
+
+//return infowindow base on restaurant id
+function findInfowindow(id) {
+    for (var i = 0; i < infos.length; i++) {
+        if (id == infos[i].id) {
+            return infos[i];
+        }
     }
 }
 
@@ -158,7 +168,7 @@ function renderRestaurants(restaurants, options) {
 
 //render single restaurant
 function renderRes(res) {
-    return '<div class="restaurant col">'+
+    return '<div id="' + res.id + '" class="restaurant col">'+
                 '<div class="res-image">' +
                     '<img src="' + res.photo + '" />' +
                 '</div>' +
@@ -166,7 +176,6 @@ function renderRes(res) {
                     '<h3 class="res-title">' + res.name + '</h3>' +
                     '<p>Rating: ' + renderRating(res.rating) + '</p>' +
                     '<p><span class="fa fa-dollar"></span>' + res.cost + '</p>' +
-                    '<p><span class="fa fa-location-arrow"></span>' + res.address + '</p>' +
                 '</div>' +
             '</div>'
 }
