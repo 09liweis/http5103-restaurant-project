@@ -74,6 +74,7 @@ function initMap() {
         var marker = new google.maps.Marker({
             position: {lat: r.lat, lng: r.lng},
             map: map,
+            icon: '../images/locations/map-marker.png',
             animation: google.maps.Animation.DROP,
             id: r.id
         });
