@@ -18,6 +18,30 @@ var delay = 1000;
 var message = "Please wait";
 var messageNow;
 var messageThen;
+var tab1;
+var tab2;
+var tab3;
+var rest;
+/* This function is based on the code at the webpage - https://jqueryui.com/tabs 
+ date: 12/10/2016*/
+$(function() {
+	$("#tabs").tabs({
+		activate: function (event, ui) {
+			//adjust the css of each tab since the content of each section is different
+			if(ui.newTab.index() == 1 || ui.newTab.index() == 2){
+				$("#rest").css('margin-top', '0');
+				$("#tabs").css('margin-bottom', '0');
+				$("#tabs").css('padding-bottom', '0');
+			}
+			else{
+				$("#rest").css('margin-top', "400px");
+				$("#tabs").css('margin-bottom', '0.5em');
+				$("#tabs").css('padding-bottom', '1em');
+			}
+		}
+	});
+});
+
 function init(){
 	hidePar = document.getElementById("hidePar");
 	slides = document.querySelectorAll("#slides .slide");
@@ -28,6 +52,10 @@ function init(){
 	showLessButton = document.getElementById("showLessButton");
 	messageNow = document.getElementById("messageNow");
 	messageThen = document.getElementById("messageThen");
+	tab1 = document.getElementById("tabs-1");
+	tab2 = document.getElementById("tabs-2");
+	tab3 = document.getElementById("tabs-3");
+	rest = document.getElementById("rest");
 	showMoreWords = messageNow.innerHTML;
 	showLessWords = messageThen.innerHTML;
 	showMoreButton.onclick = showMorePar;
@@ -71,4 +99,24 @@ function showLessParNow(){
 	hidePar.style.display = "none";
 	showMore.style.display = "inline-block";
 	messageNow.innerHTML = showMoreWords;
+}
+
+
+
+$( "#tabs" ).on( "tabsactivate", function(event, ui) {
+	rest.style.marginTop = "0";
+} );
+
+$( "#tabs" ).on( "tabsactivate", function(event, ui) {
+	rest.style.marginTop = "0";
+} );
+
+function addMargin(){
+	alert("hahha1");
+	rest.style.marginTop = "400px";
+}
+
+function reduceMargin(){
+	alert("hahaha2");
+	rest.style.marginTop = "0px";
 }
