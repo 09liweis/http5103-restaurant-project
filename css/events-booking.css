@@ -57,6 +57,10 @@
     padding: 10px;
 }
 
+.event-title {
+    margin-bottom: 5px;
+}
+
 #eventform {
     display: none;
 }
