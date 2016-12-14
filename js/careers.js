@@ -1,5 +1,5 @@
 //GLOBAL VARIABLES
-bigImg="images/careers/careers.jpg";
+var bigImg="images/careers/careers.jpg";
 function Career(nameIn,descIn,typeIn,imgIn){
 	this.type=typeIn;
 	this.name=nameIn;
@@ -7,26 +7,29 @@ function Career(nameIn,descIn,typeIn,imgIn){
 	this.img=imgIn;
 };
 var appCareers;
-//ON PAGE LOAD
+
+//ON PAGE LOAD 
 window.onload=startScript;
 
 function startScript(){
 	appCareers = new CareersApp();
 	appCareers.display();
-
-	if(/^\?target=(\d)+$/.test(location.search))   // TEST FOR SEARCH STRING
+	// TEST FOR SEARCH STRING
+	if(/^\?target=(\d)+$/.test(location.search))   
 		$('.career-item[value="'+location.search.replace( /^\D+/g, '')+'"]').click();
 }
 
-//CAREERS DISPLAY OBJECT
+//CONSTRUCTOR FOR CAREERS_DISPLAY OBJECT
 function CareersApp(){
 	//Visible only in object(PRIVATE)
 	var careers =[];
 
 	//Properties(public)
-	this.state=0;//state of object
+	this.state=0;//state of object(to control stages of creation)
 	this.applicationForm='';//application form element
 	this.applicationContainerId='main';//block ID where view will be inputed
+
+	//function to display ALL
 	this.display= function(){
 		this.clearAll();
 		this.initBlocks();
@@ -35,6 +38,7 @@ function CareersApp(){
 		this.startTabs();
 	};
 
+	//function to update object
 	this.update= function(){
 		if(this.state===0){
 			this.display();
@@ -52,7 +56,8 @@ function CareersApp(){
 			this.startTabs();
 		};
 	};
-	//Getting DATA
+
+	//Getting DATA ---- could be changed on ajax get
 	this.getData=function(){
 		if(this.state!==1) return;
 		careers.push(new Career("Servers","Perform duties which combine preparing and serving food and nonalcoholic beverages.	",1,'images/careers/servers.jpg'));
@@ -64,20 +69,23 @@ function CareersApp(){
 		careers.push(new Career("Buspersons","This person is responsible to set and clears restaurant tables, stocks all service stations and assist food servers with table service to ensure total guest satisfaction.",7,'images/careers/foodrunners.jpg'));
 		this.state=2;
 	};
-	//ONLY DISPLAY CURRENT DATA
+
+	//Return current data
 	this.getCareers=function (){
 		return careers;
 	};
-	//SETING INITIAL VALUES USING GLOBAL DATA
-	this.setInitials=function (){
-			//initial setup
 
+	//SET INITIAL VALUES AND DATA
+	this.setInitials=function (){
+		
+		//initial setup
 	    if(this.state!==2) return;
 
 		$("#careers-list").css("width","25%");
-		$(".col-3::last").hide();
 		$(".col-3::last").css("float","right");
-		$("#careers-desc").css({"width":"75%","background-image":"url("+bigImg+")","background-repeat":"no-repeat","background-size":"cover"});
+		$("#careers-desc").hide();
+		$("#apply-form").hide();
+		$("#careers-desc-cont").css({"width":"75%","background-image":"url("+bigImg+")","background-repeat":"no-repeat","background-size":"cover"});
 
 		var careersList = '';
 		for (var i = 0; i < careers.length; i++) {
@@ -98,84 +106,83 @@ function CareersApp(){
 		}
 		this.state=3;
 	};
+
 	//ENABLING INTERECTION BETWEEN ELEMENTS
 	this.startTabs=function(){
 
 	    if(this.state!==3) return;
 
 		var tempColor='';
-		$('.career-item').hover(
-			function(){
-				tempColor=$(this).css("color");
-				$(this).css("color",$(this).css("background-color"));
-				$(this).css("background-color",tempColor);
-			},
-			function(){
-				tempColor=$(this).css("color");
-				$(this).css("color",$(this).css("background-color"));
-				$(this).css("background-color",tempColor);
-			}
-			);
+
+		//display appropriate info onClick
 		$('.career-item').bind("click", function()
 			{
+				$("#careers-desc-cont").hide();
 				$("#careers-desc").hide();
 				$("#apply-form").hide();
-				$("#careers-desc").css({"width":"45%","background":"#fff"});
-				$("#apply-form").css({"width":"30%","background":"#fff"});
+				$("#careers-desc-cont").css({"width":"75%","background":"#fff"});
+				$("#careers-desc").css({"overflow": "hidden"});
+				$("#apply-form").css({"width":"100%","background":"#fff"});
 
-				$('.career-item').css({"background-color":"#fff"});
-				$('.career-item').css({"color":"#666"});
+				//$('.career-item').css({"background-color":"#fff"});
+				//$('.career-item').css({"color":"#666"});
 
-				$("#apply-form").show(1000);
-				$("#careers-desc").show(1000);
+				$("#careers-desc-cont").show(1000);
+				$("#careers-desc").show();
+				$("#apply-form").show();
+
 
 				var typeIn=this.value;
 				var curChoise=$.grep(careers, function(e){ return e.type === typeIn; }).pop();
 				history.pushState(null,"", 'careers.html?target='+typeIn);
 				$("#careers-desc").html('<h2>'+curChoise.name+'</h2>');
+				$("#careers-desc").append('<img src="'+curChoise.img+'" alt="Image of '+curChoise.name+'"/>');
 				$("#careers-desc").append('<h3> Job description : </h3>');
 				$("#careers-desc").append('<p>'+curChoise.desc+'</p>');
-				$("#careers-desc").append('<img src="'+curChoise.img+'" alt="Image of '+curChoise.name+'"/>');
 				$("#careers-desc").append('<p>If you enjoy working in an upbeat environment and have the personality to match,you may be just who we’re looking for.</p>')
-				$("#careers-desc").find('img').css("width","100%");
+				$("#careers-desc").find('img').css({"width":"300px","float": "left","padding":"10px"});
 				document.getElementById('apply-form').getElementsByTagName('select')[0].value=typeIn;
 				
 			});
-
+		//change info when changed career in application form
 		this.applicationForm.getElementsByTagName('select')[0].onchange=function(){
 			$('.career-item[value="'+this.value+'"]').click();
 		};
+		//validate application form
 		this.applicationForm.onsubmit=valApplication;
 
+		//function to validate application form
 		function valApplication() {
-			 	
 			var errorMsg='';
 			var nameValue=this.user_name.value;
-
+			$(".form-input").css({"background": "#fff"});
+			//name has to be entered!
 			if(nameValue === "" || nameValue === null){
-		    
 		    	errorMsg = this.user_name;
-		    	errorMsg.style.background = "red";
+		    	errorMsg.style.background = "rgba(0,0,0,0.46)";
 		    	errorMsg.focus();
 		    	return false;
 			}
-
-			var emailRE = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+			else
+			//Email has to mach regEx
+			var emailRE = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
 			if (!emailRE.test(this.user_email.value)){
 		    	errorMsg = this.user_email;
-		    	errorMsg.style.background = "red";
+		    	errorMsg.style.background = "rgba(0,0,0,0.46)";
 		    	errorMsg.focus();
+		    	console.log("sss"+this.user_email.value+"sss"+emailRE.test(this.user_email.value));
 		    	return false;
 				}
-
-			var phoneRE = /^\d{10}$/;
+			//Phone has to be entered 
+			var phoneRE = /^\d{3}(\s|-)?\d{3}(\s|-)?\d{4}$/;
 			if (!phoneRE.test(this.user_phone.value)){
-		    	errorMsg = this.user_email;
-		    	errorMsg.style.background = "red";
+		    	errorMsg = this.user_phone;
+		    	errorMsg.style.background = "rgba(0,0,0,0.46)";
 		    	errorMsg.focus();
 		    	return false;
 				}
-				$("#apply-form").html('<p> Thanks,'+this.user_name.value+ ', for your application!</p>');
+			//Confirmation of application form validation
+			$("#apply-form").html('<p> Thanks,'+this.user_name.value+ ', for your application!</p>');
 			return false;  
 		};
 		this.state=4;
@@ -205,15 +212,19 @@ function CareersApp(){
 		el.className="col-3";
 	    document.getElementById('columns-main').appendChild(el);
 
-		el = document.createElement("article");
-		el.id="careers-desc";
+	    el = document.createElement("div");
+		el.id="careers-desc-cont";
 		el.className="col-3";
 	    document.getElementById('columns-main').appendChild(el);
 
+		el = document.createElement("article");
+		el.id="careers-desc";	
+		el.style="margin-bottom: 10px;"
+	    document.getElementById('careers-desc-cont').appendChild(el);
+
 		el = document.createElement('aside');
 		el.id="apply-form";
-		el.className="col-3";
-	    document.getElementById('columns-main').appendChild(el);
+	    document.getElementById('careers-desc-cont').appendChild(el);
 
 		el = document.createElement("h2");  
 	    el.innerHTML = "Apply";
@@ -228,86 +239,87 @@ function CareersApp(){
 		var newForm=document.getElementById('sendmsg');
 
 		divEl = document.createElement('div');
+		divEl.className="form-group";
 		el = document.createElement('label');
 		el.for='user_name';
+		el.className="form-label";
 		el.innerHTML="Enter your name:";
 	    divEl.appendChild(el);
-	    newForm.appendChild(divEl);
-
-	    divEl = document.createElement('div');
 	    el = document.createElement('input');
 	    el.type="text";
 	    el.id="name";
 	    el.name="user_name";
+		el.className="form-input";
 	    el.placeholder="Enter your name here...";
 		divEl.appendChild(el);
 	    newForm.appendChild(divEl);
 
 	    divEl = document.createElement('div');
+		divEl.className="form-group";
 		el = document.createElement('label');
 		el.for='user_email';
+		el.className="form-label";
 		el.innerHTML="Enter your email:";
 	    divEl.appendChild(el);
-	    newForm.appendChild(divEl);
-
-	    divEl = document.createElement('div');
 	    el = document.createElement('input');
 	    el.type="text";
 	    el.id="email";
 	    el.name="user_email";
+		el.className="form-input";
 	    el.placeholder="Enter your email here...";
 		divEl.appendChild(el);
 	    newForm.appendChild(divEl);
 
 	  	divEl = document.createElement('div');
+		divEl.className="form-group";
 		el = document.createElement('label');
 		el.for='user_phone';
+		el.className="form-label";
 		el.innerHTML="Enter your phone:";
 		divEl.appendChild(el);
-	    newForm.appendChild(divEl);
-
-	    divEl = document.createElement('div');
 	    el = document.createElement('input');
 	    el.type="text";
 	    el.id="phone";
 	    el.name="user_phone";
+		el.className="form-input";
 	    el.placeholder="Enter your phone here...";
 		divEl.appendChild(el);
 	    newForm.appendChild(divEl);
 
 
 	    divEl = document.createElement('div');
+		divEl.className="form-group";
 		el = document.createElement('label');
 		el.for='user_job_title';
+		el.className="form-label";
 		el.innerHTML="Apply as:";
 		divEl.appendChild(el);
-	    newForm.appendChild(divEl);
-
-
-	    divEl = document.createElement('div');
 	    el = document.createElement('select');
 	    el.name="user_job_title";
+		el.className="form-input";
 		divEl.appendChild(el);
 	    newForm.appendChild(divEl);
 
 	    divEl = document.createElement('div');
+		divEl.className="form-group";
 		el = document.createElement('label');
 		el.for='user_msg';
+		el.className="form-label";
 		el.innerHTML="Additional information:";
 		divEl.appendChild(el);
-	    newForm.appendChild(divEl);
-
-	    divEl = document.createElement('div');
 	    el = document.createElement('textarea');
-	    el.id="message	";
+	    el.id="message";
 	    el.name="user_msg";
+		el.className="form-input";
 		divEl.appendChild(el);
 	    newForm.appendChild(divEl);
 
 	    divEl = document.createElement('div');
+		divEl.className="form-group";
 		el = document.createElement('button');
 		el.type='submit';
 		el.name='submit';
+		el.className="button";
 		el.innerHTML="Apply now!";	
 		divEl.appendChild(el);
 	    newForm.appendChild(divEl);
