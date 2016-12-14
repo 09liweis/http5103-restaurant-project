@@ -1,3 +1,4 @@
+//Constuctor for deal object
 function SpecialDeal(dayIn,dateIn,titleIn='New deal',imgIn,descIn){
 	this.img=imgIn;
 	this.desc=descIn;
@@ -5,15 +6,18 @@ function SpecialDeal(dayIn,dateIn,titleIn='New deal',imgIn,descIn){
 	this.day=dayIn;
 	this.date=new Date(dateIn);
 };
+//application variable(to enable console usage)
+var app='';
 
+//Page onload
 window.onload=startScript;
 
-var app='';
 function startScript(){
+
 	app=new DailySpealsApp();
 	app.start();
-
-	if(/^\?target=(\d)+$/.test(location.search))   // TEST FOR SEARCH STRING
+	// TEST FOR SEARCH STRING
+	if(/^\?target=(\d)+$/.test(location.search))   
 		{
 			switch (location.search.replace( /^\D+/g, ''))
 			{
@@ -23,25 +27,25 @@ function startScript(){
 			};
 		}
 };
-
+//Constructor for daily specials object
 function DailySpealsApp(){
 	this.state=0;
 	this.applicationContainerId='main';//block ID where view will be inputed
 
-	var nowDate=new Date();
-	this.slideIndex=nowDate.getDay()+1;
+	this.slideIndex=1;//set to display first slide of sequence 
 
-	this.specials={
+	this.specials={//set different sequnces of specials
 		0:[],//prevSpecials
 		1:[],//curSpecials
-		2: []//nextSpecials
+		2:[]//nextSpecials
 	};
-	this.curWeek=1;
+	this.curWeek=1;//set current sequence of slides
 	this.autoAnimationOn=true;
 
-	var animationInv='';
-	var timerCountDownInv='';
+	var animationInv='';//variable for auto change of slides
+	var timerCountDownInv='';//variable for timer countdown
 
+	//start display 
 	this.start= function(){
 		this.initBlocks();
 		this.getSpecialDeals();
@@ -49,40 +53,43 @@ function DailySpealsApp(){
 		this.showSlides(this.slideIndex);
 		this.setOnclicks();
 	};
-
-
-	//slides
-
+	//Slides operations
+	//slide change index
 	this.plusSlides=function(n) {
  		this.slideIndex+=n;
   		this.showSlides(this.slideIndex);
 	};
-
+	//slide set index
 	this.currentSlide=function(n) {
 		this.slideIndex=n;
   		this.showSlides(this.slideIndex);
 	};
-
+	//slide show function(prepeare slide and put appropriate information about deal)
 	this.showSlides=function(n) {
+		//circle begin and end of slides
 	  	if (n >this.specials[this.curWeek].length) {this.slideIndex = 1};
 	  	if (n <=0) {this.slideIndex = this.specials[this.curWeek].length};
+	  	//no need to display countdown for expired deals
 	  	if (this.curWeek===0) {	
 	  		document.getElementById('timerCountDownBox').style.display='none';
 	  	} 
 	  	else {
 	  		document.getElementById('timerCountDownBox').style.display='block';
 	  	}
+	  	//different text on countdown for this and next week 
 	  	if (this.curWeek===1) {document.getElementById('timerCountDownText').innerHTML="Time to end:";}
 	  	else if(this.curWeek===2){document.getElementById('timerCountDownText').innerHTML="Time to start:";}
-	  	var curSlideEl=document.getElementById('curSlide');
 
+	  	var curSlideEl=document.getElementById('curSlide');
 	  	document.getElementById('curSlideImg').src=this.specials[this.curWeek][this.slideIndex-1].img;
 	  	document.getElementById('dealTitle').innerHTML='<h2>'+this.specials[this.curWeek][this.slideIndex-1].title+'</h2>';
 	  	document.getElementById('dealDesc').innerHTML='<p>'+this.specials[this.curWeek][this.slideIndex-1].desc+'</p>';
 	  	document.getElementById('curSlideDay').innerHTML=this.specials[this.curWeek][this.slideIndex-1].day;
 	  	document.getElementById('curSlidePosition').innerHTML=this.slideIndex+'/'+this.specials[this.curWeek].length;
 	  	clearInterval(timerCountDownInv);
-	  	var self=this;
+
+	  	var self=this;//trick to keep application object for further use
+	  	//timer countdown settings
 	  	timerCountDownInv=setInterval(function(){
 	  		var now=new Date();
 	  		var dateDiff= self.specials[self.curWeek][self.slideIndex-1].date.getTime()-now.getTime();
@@ -106,18 +113,18 @@ function DailySpealsApp(){
 	  	},500); 
 
 	};
-
+	// Set onClick events 
 	this.setOnclicks=function(){
-		var self=this;
-	  	$('#prev').click(function(){self.plusSlides(-1);self.autoAnimationOn=false;clearInterval(animationInv);});
-	  	$('#next').click(function(){self.plusSlides(1 );self.autoAnimationOn=false;clearInterval(animationInv);});
-	  	$('#curSlideImg').click(function(){
+		var self=this;//trick to keep application object for further use
+	  	$('#prev').click(function(){self.plusSlides(-1);self.autoAnimationOn=false;clearInterval(animationInv);});//go to previous slide of current week
+	  	$('#next').click(function(){self.plusSlides(1 );self.autoAnimationOn=false;clearInterval(animationInv);});//go to next slide of current week
+	  	$('#curSlideImg').click(function(){//change autochange of slides by click on the area of slide
 	  		if(self.autoAnimationOn){self.autoAnimationOn=false;clearInterval(animationInv);}
 	  		else{self.autoAnimationOn=true;animationInv=setInterval(function(){self.plusSlides(1);},5000);};
 	  	});
-	  	$('#prevWeek').click(function(){
+	  	$('#prevWeek').click(function(){//go to previous week specaials
 	  		self.curWeek-=1;
-	  		history.pushState(null,"", 'daily-specials.html?target='+self.curWeek);
+	  		history.pushState(null,"", 'daily-specials.html?target='+self.curWeek);//trick to change location without page reload 
 	  		self.updateInfo();		
 	  		if(self.curWeek!==1) {
 	  			this.style.display='none';
@@ -136,9 +143,9 @@ function DailySpealsApp(){
 	  		self.slideIndex=1;
 	  		self.showSlides();
 	  	});
-	  	$('#nextWeek').click(function(){
+	  	$('#nextWeek').click(function(){//go to previous week specaials
 	  		self.curWeek+=1;
-	  		history.pushState(null,"", 'daily-specials.html?target='+self.curWeek);
+	  		history.pushState(null,"", 'daily-specials.html?target='+self.curWeek);//trick to change location without page reload 
 	  		self.updateInfo();
 	  		if(self.curWeek!==1) {
 	  			this.style.display='none';
@@ -157,13 +164,16 @@ function DailySpealsApp(){
 	  		self.slideIndex=1;
 	  		self.showSlides();
 	  	});
-
-	  	if(this.autoAnimationOn){
+	  	//button book table redirect
+	  	$('#bookTableNow').click(function(){
+	  		location.href="index.html#booking-section";
+	  	});
+	  	if(this.autoAnimationOn){//enable autochange of slide on start
 	  		animationInv=setInterval(function(){self.plusSlides(1);},5000);
 	  	};
 	}
 
-//EVERYTHING (Hardcoded staff)
+	//update information (if week was changed), add preview for close weeks 
 	this.updateInfo=function(){
 		var el='';	
 		var imgEl='';
@@ -177,7 +187,7 @@ function DailySpealsApp(){
 		{
 		    el = document.createElement('div');
 		    el.id="prevWeekText";
-			el.className="text";
+			el.className="text nav-link";
 			el.innerHTML="Previous week";
 		    document.getElementById('prevWeek').appendChild(el);
 
@@ -199,7 +209,7 @@ function DailySpealsApp(){
 		{
 		    el = document.createElement('div');
 		    el.id="nextWeekText";
-			el.className="text";
+			el.className="text nav-link";
 			el.innerHTML="Next week";
 		    document.getElementById('nextWeek').appendChild(el);
 
@@ -219,6 +229,7 @@ function DailySpealsApp(){
 		    document.getElementById('nextWeek').appendChild(listEl);
 		}
 	};
+	//get spesial deals information
 	this.getSpecialDeals= function(){
 
 		var date=new Date();
@@ -239,7 +250,7 @@ function DailySpealsApp(){
 		this.specials[2].push(new SpecialDeal('Monday/Tuesday/Thursday',date.getTime(),'Lunch hours','images/dailyspecials/deal6.jpg','Get up to 50% off on Apple pie.'));
 
 	};
-
+	//create HTML elements for this application
 	this.initBlocks= function(){
 		var el='';
 		el = document.createElement('div');
@@ -249,7 +260,7 @@ function DailySpealsApp(){
 	   	el = document.createElement('div');
 	    el.id="prevWeek";
 		el.className="col-3";
-		el.style="float:left;width:15%;";
+		el.style="float:left;width:15%;cursor:pointer;";
 	    document.getElementById('specialsContainer').appendChild(el);
 
 	    el = document.createElement('div');
@@ -310,7 +321,7 @@ function DailySpealsApp(){
 
 	   	el = document.createElement('button');
 	    el.id="bookTableNow";
-	    el.className='book';
+	    el.className="button";
 		el.innerHTML="Book a table now!";
 	    document.getElementById('timerCountDownBox').appendChild(el);
 
@@ -327,7 +338,7 @@ function DailySpealsApp(){
 	    el = document.createElement('div');
 	    el.id="nextWeek";
 		el.className="col-3";
-		el.style="float:right;width:15%;";
+		el.style="float:right;width:15%;cursor:pointer;";
 	    document.getElementById('specialsContainer').appendChild(el);		
 	};
 };
