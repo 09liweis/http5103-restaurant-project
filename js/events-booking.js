@@ -73,6 +73,50 @@ window.onload = function() {
     $('#start-time').change(function() {
         renderEndTime();
     });
+    
+    $('#eventform').submit(function() {
+        event.preventDefault();
+        var name = $('#name').val();
+        var date = $('#date').val();
+        var startTime = $('#start-time').val();
+        var endTime = $('#end-time').val();
+        var description = $('#description').val();
+        
+        $('#name, #date, #start-time, #end-time, #description').removeClass('input-error');
+        
+        if (name.trim() == '') {
+            displayError('#name');
+            return false;
+        }
+        
+        if (date == '') {
+            displayError('#date');
+            return false;
+        }
+        
+        if (startTime == '') {
+            displayError('#start-time');
+            return false;
+        }
+        
+        if (endTime == '') {
+            displayError('#end-time');
+            return false;
+        }
+        
+        if (description.trim() == '') {
+            displayError('#description');
+            return false;
+        }
+        
+        $('#msg').removeClass('error').addClass('success').html('The event request has been submitted');
+        
+    });
+}
+
+function displayError(input) {
+    $(input).addClass('input-error');
+    $('#msg').addClass('error').html('You must fill out every field');
 }
 
 function renderForm() {
@@ -106,11 +150,10 @@ function renderEvent(event) {
     var day = (date.getDate() < 10) ? '0' + date.getDate() : date.getDate();
     var format = date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + day;
     // compare current date with event date to check expird event
-    var expird = (format > event.date) ? '<div class="label">expird</div>' : '';
+    var expird = (format > event.date) ? '<div class="label">Expird</div>' : '';
     return '<div class="event col">' +
                 '<div class="event-image" style="background-image: url(' + event.photo + ')">' +
                     expird +
-                    //'<img src="' + event.photo + '" />' +
                 '</div>' +
                 '<div class="event-info">' +
                     '<h3 class="event-title">' + event.name + '</h3>' +
@@ -123,28 +166,28 @@ function renderEvent(event) {
 //function to render future dates
 function renderDate() {
     var date = new Date();
-    var dates = '<option class="form-input">Please select a date</option>';
+    var dates = '';
     for (var i = date.getDate(); i <= 31; i++) {
         var value = date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + ((i < 10) ? '0' + i: i);
         dates += '<option class="form-input" value="' + value + '">' + value + '</option>';
     }
-    $('#date').html(dates);
+    $('#date').append(dates);
 }
 
 //function to render future time
 function renderStartTime() {
     var date = new Date();
-    var times = '<option>Select start time</option>';
+    var times = '';
     times += renderTime(date.getHours());
-    $('#start-time').html(times);
+    $('#start-time').append(times);
 }
 
 //function to render dynamic end time
 function renderEndTime() {
     var start = $('#start-time').val();
-    var times = '<option>Select end time</option>';
+    var times = '';
     times += renderTime(parseInt(start) + 1);
-    $('#end-time').html(times);
+    $('#end-time').append(times);
     $('#end-time-form').show('fast');
 }
 

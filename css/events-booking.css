@@ -16,6 +16,10 @@
     margin: 20px 0;
 }
 
+#events-list {
+    margin-top: 20px;
+}
+
 #eventform .col {
     width: 20%;
 }

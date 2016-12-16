@@ -3,52 +3,52 @@ var map;
 var restaurants = [
     {
         id: 1,
-        name: 'restaurant-1',
-        lat: 43.7283515,
-        lng: -79.6101083,
+        name: 'Restaruant at Humber College',
+        lat: 43.727098,
+        lng: -79.607329,
         address: 'somewhere',
         photo: 'images/locations/city-restaurant-lunch-outside.jpg',
-        cost: '$$',
+        cost: 2,
         rating: '5'
     },
     {
         id: 2,
-        name: 'restaurant-2',
-        lat: 43.7279994,
-        lng: -79.6071043,
+        name: 'Restaurant at Humber Residences',
+        lat: 43.7273952,
+        lng: -79.6063705,
         address: 'somewhere',
         photo: 'images/locations/dinner-meal-table-wine.jpg',
-        cost: '$$',
+        cost: 2,
         rating: '4.5'
     },
     {
         id: 3,
-        name: 'restaurant-3',
-        lat: 43.7256537,
-        lng: -79.6073304,
+        name: 'Restauarnt at Finch and Hw27',
+        lat: 43.7343881,
+        lng: -79.605421,
         address: 'somewhere',
         photo: 'images/locations/food-salad-restaurant-person.jpg',
-        cost: '$$',
+        cost: 2,
         rating: '4.8'
     },
     {
         id: 4,
-        name: 'restaurant-4',
-        lat: 43.7323522,
-        lng: -79.609769,
+        name: 'Restaurant at William Osler',
+        lat: 43.7308434,
+        lng: -79.6000341,
         address: 'somewhere',
         photo: 'images/locations/menu-restaurant-vintage-table.jpg',
-        cost: '$$',
+        cost: 2,
         rating: '4.3'
     },
     {
         id: 5,
-        name: 'restaurant-5',
+        name: 'Restaurant at Mansions Of Humberwood',
         lat: 43.7245555,
         lng: -79.6193396,
         address: 'somewhere',
         photo: 'images/locations/pexels-photo-30503.jpg',
-        cost: '$$',
+        cost: 2,
         rating: '4.7'
     },
 ];
@@ -176,11 +176,12 @@ function renderRes(res) {
                 '<div class="res-info">' +
                     '<h3 class="res-title">' + res.name + '</h3>' +
                     '<p>Rating: ' + renderRating(res.rating) + '</p>' +
-                    '<p><span class="fa fa-dollar"></span>' + res.cost + '</p>' +
+                    '<p>Cost: ' + renderCost(res.cost) + '</p>' +
                 '</div>' +
             '</div>'
 }
 
+// function to render restaurant rating
 function renderRating(rate) {
     var array = rate.split('.');
     var int = parseInt(array[0]);
@@ -192,4 +193,13 @@ function renderRating(rate) {
         ratings += '<span class="fa fa-star-half"></span>';
     }
     return ratings;
+}
+
+// function to render restaurant cost
+function renderCost(cost) {
+    var costs = '';
+    for (var i = 0; i < cost; i++) {
+        costs += '<span class="fa fa-dollar"></span>';
+    }
+    return costs;
 }
