@@ -1,3 +1,5 @@
+//Author: Ivan Moruhyi
+//Technologies Used: Vanilla JavaScript
 window.onload = function() {
     //Menu object holds:
     //1. currentItem: which is selected category at the moment.
@@ -24,15 +26,18 @@ window.onload = function() {
         requestCategory: function(categoryNum) {
             function getCategory(categoryNum) {
                 for(var i = 0; i < menu.menuCategories.length; ++i) {
-                    menu.menuCategories[i].classList.remove('hidden');
-                    menu.menuCategories[i].classList.add('hidden');
+                    //menu.menuCategories[i].classList.remove('hidden');
+                    //menu.menuCategories[i].classList.add('hidden');
+                    
+                    menu.menuCategories[i].style.display = 'none';
                     
                     menu.menuCategoriesTitles[i].style.color = '#fff';
                     
                     menu.indicators[i].classList.remove('hidden');
                     menu.indicators[i].classList.add('hidden');
                 }
-                menu.menuCategories[categoryNum].classList.toggle('hidden');
+              
+              menu.menuCategories[categoryNum].style.display='block';  //menu.menuCategories[categoryNum].classList.toggle('hidden');
                 menu.menuCategoriesTitles[categoryNum].style.color = '#ffb606';
                 
                 menu.indicators[categoryNum].classList.toggle('hidden');
@@ -67,31 +72,14 @@ window.onload = function() {
     //initial settings when page loads. Always 1 category is going to be displayed (breakfast).
     for (var i = 0; i < menu.menuCategories.length; ++i) {
         if (i !== 0) {
-            menu.menuCategories[i].classList.toggle('hidden');
+            menu.menuCategories[i].style.display = 'none';
+            //menu.menuCategories[i].classList.toggle('hidden');
             menu.indicators[i].classList.toggle('hidden');
         } else {
             menu.menuCategoriesTitles[i].style.color = '#ffb606';
         }
     }
     
-    //function to handle search string requests. Later based on search string: ?breakfast(0) ?lunch (1) ?alcohol (2) ?soft drinks(3) ?desert(4). This is function will display menu certain menu category based on search string value.
-    function searchStringRequest(number) {
-        menu.currentItem = number;
-        for (var i = 0; i < menu.menuCategories.length; ++i) {
-            if (i !== number) {
-                menu.menuCategories[i].classList.remove('hidden');
-                menu.menuCategories[i].classList.add('hidden');
-                menu.indicators[i].classList.remove('hidden');
-                menu.indicators[i].classList.add('hidden');
-                menu.menuCategoriesTitles[i].style.color = '#fff';
-            } else {
-                menu.menuCategories[i].classList.remove('hidden');
-                menu.menuCategoriesTitles[i].style.color = '#ffb606';
-                menu.indicators[i].classList.remove('hidden');
-                menu.menuCategoriesTitles[i].style.color = '#ffb606';
-            }
-        }
-    }
     //assigning events to all menu categories
     for (var i = 0; i < menu.menuCategories.length; ++i) {
         menu.menuCategoriesTitles[i].onclick = productionObject.requestCategory(i);
@@ -99,21 +87,42 @@ window.onload = function() {
         menu.menuCategoriesTitles[i].onmouseout = productionObject.requestHideIndicator(i);
     }
     
+    //function to handle search string requests. Later based on search string: ?breakfast(0) ?lunch (1) ?alcohol (2) ?soft drinks(3) ?desert(4). This is function will display menu certain menu category based on search string value.
+    function searchStringRequest(number) {
+        menu.currentItem = number;
+        for (var i = 0; i < menu.menuCategories.length; ++i) {
+            if (i !== number) {
+                menu.menuCategories[i].style.display = 'none';
+                //menu.menuCategories[i].classList.remove('hidden');
+                //menu.menuCategories[i].classList.add('hidden');
+                menu.indicators[i].classList.remove('hidden');
+                menu.indicators[i].classList.add('hidden');
+                menu.menuCategoriesTitles[i].style.color = '#fff';
+            } else {
+                menu.menuCategories[i].style.display = 'block';
+                //menu.menuCategories[i].classList.remove('hidden');
+                menu.menuCategoriesTitles[i].style.color = '#ffb606';
+                menu.indicators[i].classList.remove('hidden');
+                menu.menuCategoriesTitles[i].style.color = '#ffb606';
+            }
+        }
+    }
+    
     //displaying appropriate menu category based on search string. Here i'm using function that have been defined above.
     switch(location.search) {
-        case '?breakfast': 
+        case '?option=breakfast': 
             searchStringRequest(0);
             break;
-        case '?lunch':
+        case '?option=lunch':
             searchStringRequest(1);
             break;
-        case '?alcohol': 
+        case '?option=alcohol': 
             searchStringRequest(2);
             break;
-        case '?softdrinks': 
+        case '?option=softdrinks': 
             searchStringRequest(3);
             break;
-        case '?desert': 
+        case '?option=desert': 
             searchStringRequest(4);
             break;
         default: 
