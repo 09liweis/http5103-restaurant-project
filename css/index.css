@@ -1,3 +1,7 @@
+/*
+Author: Ivan Moruhyi
+Technologies Used: CSS3
+*/
 html {
     box-sizing: border-box;
 }
@@ -39,7 +43,7 @@ h1 {
     z-index: 1;
     position: absolute;
     top: 16rem;
-    left: calc(50% - 70px);
+    left: calc(50% - 35px);
     color: #2a2a2a;
     border-radius: 5px;
     padding: 0.5rem 1rem;
