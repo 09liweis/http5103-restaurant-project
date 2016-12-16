@@ -17,10 +17,6 @@ var navs = [
         name: 'home',
     },
     {
-        link: 'about-us.html',
-        name: 'about us',
-    },
-    {
         link: 'menu.html',
         name: 'menu',
     },
@@ -47,6 +43,10 @@ var navs = [
     {
         link: 'sitemap.html',
         name: 'sitemap',
+    },
+    {
+        link: 'about-us.html',
+        name: 'about us',
     },
     {
         link: 'contact-us.html',

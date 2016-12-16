@@ -12,43 +12,45 @@
         </header>
         <main id="main" class="wrapper">
             <h1>Events Booking</h1>
-            <div id="events-list">
-                
-            </div>
             <div class="button" id="book-event">
                 Book a Event
+            </div>
+            <div id="events-list">
+                
             </div>
             <div class="button" id="back-to-list">
                 Back to Event List
             </div>
             <form id="eventform" name="eventform">
                 <h2>Book a Event</h2>
+                <div id="msg">
+                </div>
                 <div class="form-group">
                     <label class="form-label" for="name">Name</label>
-                    <input class="form-input" type="text" id="name" name="name" required />
+                    <input class="form-input" type="text" id="name" name="name" />
                 </div>
                 <div class="form-group col">
                     <label class="form-label" for="date">Date</label>
-                    <select class="form-input select-form" id="date" name="date" required>
-                        
+                    <select class="form-input select-form" id="date" name="date">
+                        <option value="" selected>Select a date</option>
                     </select>
                 </div>
                 <div class="form-group col">
                     <label class="form-label" for="start-time">Start Time</label>
-                    <select class="form-input select-form" id="start-time" name="start-time" required>
-                        
+                    <select class="form-input select-form" id="start-time" name="start-time">
+                        <option value="" selected>Select start time</option>
                     </select>
                 </div>
                 <div class="form-group col" id="end-time-form">
                     <label class="form-label" for="end-time">End Time</label>
-                    <select class="form-input select-form" id="end-time" name="end-time" required>
-                        
+                    <select class="form-input select-form" id="end-time" name="end-time">
+                        <option value="" selected>Select end time</option>
                     </select>
                 </div>
                 <div class="clear"></div>
                 <div class="form-group">
                     <label class="form-label" for="description">Description</label>
-                    <textarea class="form-input" id="description" name="description" required></textarea>
+                    <textarea class="form-input" id="description" name="description"></textarea>
                 </div>
                 <div class="form-group">
                     <input class="button" type="submit" value="Submit" />
