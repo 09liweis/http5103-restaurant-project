@@ -1,3 +1,7 @@
+/*
+Author: Ivan Moruhyi
+Technologies Used: CSS3
+*/
 html {
     box-sizing: border-box;
 }
@@ -30,7 +34,7 @@ h1 {
     z-index: 1;
     background-color: rgba(0, 0, 0, 0.2);
 }
-h2 {
+#booking-section h2 {
     font-size: 32px;
     color: #ffb606;
 }
@@ -39,7 +43,7 @@ h2 {
     z-index: 1;
     position: absolute;
     top: 16rem;
-    left: calc(50% - 70px);
+    left: calc(50% - 35px);
     color: #2a2a2a;
     border-radius: 5px;
     padding: 0.5rem 1rem;
