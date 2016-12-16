@@ -28,7 +28,7 @@
 
 /* On hover, add a black background color with a little bit see-through */
 #prev:hover, #next:hover {
-  background-color: rgba(0,0,0,0.8);
+  background-color: #ffb606;
 }
 
 #slideArea {
@@ -95,19 +95,6 @@
   top: 50px;
   right: 45px;
   color: red;
-}
-.book{
-  font-size: 16px;
-  display: inline-block;
-  text-align: center;
-  margin: 1rem 0;
-  background-color: #ffb606;
-  border: none;
-  border-radius: 5px;
-  color: #2a2a2a;
-  padding: 0.5rem 2rem;
-  font-weight: bold; */
-  height: 40px;
 }
 
 
