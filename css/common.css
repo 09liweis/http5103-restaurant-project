@@ -146,6 +146,7 @@ a:hover {
 #logo-text {
     margin: 0;
     color: #ffffff;
+    margin-top: 4px;
 }
 
 #nav {
@@ -190,7 +191,13 @@ a:hover {
 }
 
 #footer {
+    text-align: center;
     background: #181818;
     color: #ffffff;
     padding: 40px 0;
+}
+
+#footer p {
+    margin-bottom: 30px;
+    font-size: 1.25rem;
 }
