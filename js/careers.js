@@ -1,3 +1,6 @@
+//Bohdan Mostytskyy//
+/////////////////////
+
 //GLOBAL VARIABLES
 var bigImg="images/careers/careers.jpg";
 function Career(nameIn,descIn,typeIn,imgIn){
@@ -77,12 +80,10 @@ function CareersApp(){
 
 	//SET INITIAL VALUES AND DATA
 	this.setInitials=function (){
-		
 		//initial setup
 	    if(this.state!==2) return;
 
 		$("#careers-list").css("width","25%");
-		$(".col-3::last").css("float","right");
 		$("#careers-desc").hide();
 		$("#apply-form").hide();
 		$("#careers-desc-cont").css({"width":"75%","background-image":"url("+bigImg+")","background-repeat":"no-repeat","background-size":"cover"});
@@ -124,13 +125,9 @@ function CareersApp(){
 				$("#careers-desc").css({"overflow": "hidden"});
 				$("#apply-form").css({"width":"100%","background":"#fff"});
 
-				//$('.career-item').css({"background-color":"#fff"});
-				//$('.career-item').css({"color":"#666"});
-
 				$("#careers-desc-cont").show(1000);
 				$("#careers-desc").show();
 				$("#apply-form").show();
-
 
 				var typeIn=this.value;
 				var curChoise=$.grep(careers, function(e){ return e.type === typeIn; }).pop();
@@ -148,6 +145,7 @@ function CareersApp(){
 		this.applicationForm.getElementsByTagName('select')[0].onchange=function(){
 			$('.career-item[value="'+this.value+'"]').click();
 		};
+		
 		//validate application form
 		this.applicationForm.onsubmit=valApplication;
 
@@ -187,11 +185,13 @@ function CareersApp(){
 		};
 		this.state=4;
 	}
+
 	//HIDE everything
 	this.clearAll=function(){
 		document.getElementById(this.applicationContainerId).innerHTML='';
 		careers=[];
 	};
+
 	//CREATING HTML ELEMENTS
 	this.initBlocks=function (){ 
 	    if(this.state!==0) return;
@@ -219,7 +219,7 @@ function CareersApp(){
 
 		el = document.createElement("article");
 		el.id="careers-desc";	
-		el.style="margin-bottom: 10px;"
+		el.style="margin-bottom: 2	0px;"
 	    document.getElementById('careers-desc-cont').appendChild(el);
 
 		el = document.createElement('aside');
