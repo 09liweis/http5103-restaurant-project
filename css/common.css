@@ -106,14 +106,13 @@ a:hover {
     display: inline-block;
     border-radius: 3px;
     padding: 10px 12px;
-    background: #ffb606;
+    background: #ffb606 !important;
     color: #2a2a2a;
     cursor: pointer;
     transition: all 0.5s;
     font-size: 1.25rem;
     border: none;
     text-align: center;
-    /*box-shadow: 3px 3px 6px 0 rgba(0,0,0,0.3);  TO CONFIRM?? */
 }
 
 .button:hover:enabled {
