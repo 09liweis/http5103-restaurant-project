@@ -17,10 +17,6 @@ var navs = [
         name: 'home',
     },
     {
-        link: 'about-us.html',
-        name: 'about us',
-    },
-    {
         link: 'menu.html',
         name: 'menu',
     },
@@ -47,6 +43,10 @@ var navs = [
     {
         link: 'sitemap.html',
         name: 'sitemap',
+    },
+    {
+        link: 'about-us.html',
+        name: 'about us',
     },
     {
         link: 'contact-us.html',
@@ -78,9 +78,8 @@ header.innerHTML = '<div class="wrapper">' +
 
 var footer = document.getElementById('footer');
 footer.innerHTML = '<div class="wrapper">' +
-                            '<div class="" id="contact">' +
-                                '<p id="address"><i class="fa fa-map-marker"></i>205 Humber College Blvd, Etobicoke, ON M9W 5L7</p>' +
-                                '<p id="phone"><i class="fa fa-phone"></i>(111)111-111</p>' +
-                            '</div>' +
-                        '<p>Copyright &copy; 2016 Restaurant</p>';
+                        '<p><i class="fa fa-map-marker"></i></p>' +
+                        '<p id="address">205 Humber College Blvd, Etobicoke, ON M9W 5L7</p>' +
+                        '<p id="phone">Call: (111)111-111</p>' +
+                        '<p>Copyright &copy; ' + new Date().getFullYear() + ' DJT Restaurant</p>' +
                     '</div>';

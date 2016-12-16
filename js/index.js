@@ -1,5 +1,7 @@
+//Author: Ivan Moruhyi
+//Technologies Used: Vanilla Javascript
 window.onload = function() {
-    //Looks similar to constructor function, but not completely. The idea is that I wanted to create a carousel using this function, but some of the properties should not be accessible through the constructed carousel object.
+    //Looks similar to constructor function, but not quite. The idea is that I wanted to create a carousel using this function, but some of the properties should not be accessible through the constructed carousel object.
     //This function takes 2 parameters: slidesArray - array with slides, slidesIndicatorsArray - array of circles which indicate current slide.
     var carouselConstructor = function (slidesArray, slidesIndicatorsArray) {
         var carousel = {}; //carousel object
@@ -22,7 +24,7 @@ window.onload = function() {
             }
             slideIndicators[currentSlide].style.borderColor = '#ffb606';
         };
-        //nextSlide function handles changing to previous slide.
+        //prevSlide function handles changing to previous slide.
         carousel.prevSlide = function() {
             slideIndicators[currentSlide].style.borderColor = '#fff';
             slides[currentSlide].classList.toggle('hidden');
@@ -122,6 +124,10 @@ window.onload = function() {
         }
         outMsg.classList.remove('hidden');
         outMsg.innerHTML = 'Thank you for booking. You will get a notification soon.'
+        var msgTimeout = setTimeout(delMsg, 5000);
+        function delMsg() {
+            outMsg.innerHTML = "";
+        }
         return false;
     }
     
@@ -141,6 +147,10 @@ window.onload = function() {
         }
         msg.classList.remove('hidden');
         msg.innerHTML = 'Thank you for subscription';
+        var msgTimeout = setTimeout(delMsg, 5000);
+        function delMsg() {
+            msg.innerHTML = "";
+        }
         return false;
     }
     
