@@ -1,3 +1,6 @@
+//Bohdan Mostytskyy//
+/////////////////////
+
 //Constuctor for deal object
 function SpecialDeal(dayIn,dateIn,titleIn='New deal',imgIn,descIn){
 	this.img=imgIn;
@@ -53,17 +56,20 @@ function DailySpealsApp(){
 		this.showSlides(this.slideIndex);
 		this.setOnclicks();
 	};
+
 	//Slides operations
 	//slide change index
 	this.plusSlides=function(n) {
  		this.slideIndex+=n;
   		this.showSlides(this.slideIndex);
 	};
+
 	//slide set index
 	this.currentSlide=function(n) {
 		this.slideIndex=n;
   		this.showSlides(this.slideIndex);
 	};
+
 	//slide show function(prepeare slide and put appropriate information about deal)
 	this.showSlides=function(n) {
 		//circle begin and end of slides
@@ -113,6 +119,7 @@ function DailySpealsApp(){
 	  	},500); 
 
 	};
+	
 	// Set onClick events 
 	this.setOnclicks=function(){
 		var self=this;//trick to keep application object for further use
@@ -309,6 +316,12 @@ function DailySpealsApp(){
 	    el.id="timerCountDownBox";
 	    document.getElementById('curSlide').appendChild(el);
 
+	    el = document.createElement('button');
+	    el.id="bookTableNow";
+	    el.className="button";
+		el.innerHTML="Book a table now!";
+	    document.getElementById('timerCountDownBox').appendChild(el);
+
 	    el = document.createElement('div');
 	    el.id="timerCountDownText";
 	    el.innerHTML="Time to end :"
@@ -317,12 +330,6 @@ function DailySpealsApp(){
 	    el = document.createElement('div');
 	    el.id="timerCountDown";
 	    el.innerHTML=""
-	    document.getElementById('timerCountDownBox').appendChild(el);
-
-	   	el = document.createElement('button');
-	    el.id="bookTableNow";
-	    el.className="button";
-		el.innerHTML="Book a table now!";
 	    document.getElementById('timerCountDownBox').appendChild(el);
 
 		el = document.createElement('a');

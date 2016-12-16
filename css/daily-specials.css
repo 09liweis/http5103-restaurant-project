@@ -77,7 +77,7 @@
 }
 
 #nextWeek,#prevWeek{
-  background: rgba(0,0,0,0.46);
+  background: rgba(0,0,0,0.226);
   height: 500px;
   overflow: hidden;
 }
@@ -92,7 +92,7 @@
   font-size: 20px;
   font-weight: bold;
   position: absolute; 
-  top: 50px;
+  top: 40px;
   right: 45px;
   color: red;
 }
