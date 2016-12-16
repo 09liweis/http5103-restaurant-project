@@ -2,13 +2,20 @@ h1 {
     text-align: center;
 }
 
+p {
+  margin: 10px;
+}
 #columns-main {
   clear: both;
   padding: 1.5rem 0;
   overflow: hidden;
 }
+
+.col-3::last{
+  float:right;
+}
 .col-3 {
-  width: 33%;
+  width: 75%;
   min-height: 500px;
   margin: 0;
   float: left;
