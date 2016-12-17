@@ -114,6 +114,10 @@ button {
 	margin: 0 2px !important;
 }
 
+.button:disabled {
+    pointer-events: none;
+}
+
 button:disabled {
     background: #dddddd;
 }
