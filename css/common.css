@@ -115,7 +115,7 @@ a:hover {
     text-align: center;
 }
 
-.button:hover {
+.button:hover:enabled {
     background: #2a2a2a !important;
     color: #ffffff !important;
 }
