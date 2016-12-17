@@ -3,11 +3,12 @@
 
 //GLOBAL VARIABLES
 var bigImg="images/careers/careers.jpg";
-function Career(nameIn,descIn,typeIn,imgIn){
+function Career(nameIn,descIn,typeIn,imgIn,locIn){
 	this.type=typeIn;
 	this.name=nameIn;
 	this.desc=descIn;
 	this.img=imgIn;
+	this.locations=locIn;
 };
 var appCareers;
 
@@ -26,6 +27,7 @@ function startScript(){
 function CareersApp(){
 	//Visible only in object(PRIVATE)
 	var careers =[];
+	var restaurants= [];
 
 	//Properties(public)
 	this.state=0;//state of object(to control stages of creation)
@@ -63,13 +65,35 @@ function CareersApp(){
 	//Getting DATA ---- could be changed on ajax get
 	this.getData=function(){
 		if(this.state!==1) return;
-		careers.push(new Career("Servers","Perform duties which combine preparing and serving food and nonalcoholic beverages.	",1,'images/careers/servers.jpg'));
-		careers.push(new Career("Bartenders","Mix and serve drinks to patrons, directly or through waitstaff.",2,'images/careers/bartender.jpg'));
-		careers.push(new Career("Host/Hostess","Welcome patrons, seat them at tables or in lounge, and help ensure quality of facilities and service.",3,'images/careers/host.jpg'));
-		careers.push(new Career("Food Runners","Assist waiters and waitresses in running food from the kitchen to customer tables.",4,'images/careers/foodrunners.jpg'));
-		careers.push(new Career("Line and Prep Cooks","	Prepare, season, and cook dishes such as soups, meats, vegetables, or desserts in restaurants. May order supplies, keep records and accounts, price items on menu, or plan menu.",5,'images/careers/linecooks.jpg'));
-		careers.push(new Career("Dishwashers","Clean dishes, kitchen, food preparation equipment, or utensils.",6,'images/careers/dishwasher.jpg'));
-		careers.push(new Career("Buspersons","This person is responsible to set and clears restaurant tables, stocks all service stations and assist food servers with table service to ensure total guest satisfaction.",7,'images/careers/foodrunners.jpg'));
+		restaurants = [
+		    {
+		        id: 1,
+		        name: 'Restaruant at Humber College',
+		    },
+		    {
+		        id: 2,
+		        name: 'Restaurant at Humber Residences',
+		    },
+		    {
+		        id: 3,
+		        name: 'Restauarnt at Finch and Hw27',
+		    },
+		    {
+		        id: 4,
+		        name: 'Restaurant at William Osler',
+		    },
+		    {
+		        id: 5,
+		        name: 'Restaurant at Mansions Of Humberwood',
+		    },
+		];
+		careers.push(new Career("Servers","Perform duties which combine preparing and serving food and nonalcoholic beverages.	",1,'images/careers/servers.jpg',[1,2,3,4,5]));
+		careers.push(new Career("Bartenders","Mix and serve drinks to patrons, directly or through waitstaff.",2,'images/careers/bartender.jpg',[1,2,5]));
+		careers.push(new Career("Host/Hostess","Welcome patrons, seat them at tables or in lounge, and help ensure quality of facilities and service.",3,'images/careers/host.jpg',[2,4,5]));
+		careers.push(new Career("Food Runners","Assist waiters and waitresses in running food from the kitchen to customer tables.",4,'images/careers/foodrunners.jpg',[3,4]));
+		careers.push(new Career("Line and Prep Cooks","	Prepare, season, and cook dishes such as soups, meats, vegetables, or desserts in restaurants. May order supplies, keep records and accounts, price items on menu, or plan menu.",5,'images/careers/linecooks.jpg',[1,2,5]));
+		careers.push(new Career("Dishwashers","Clean dishes, kitchen, food preparation equipment, or utensils.",6,'images/careers/dishwasher.jpg',[3,5]));
+		careers.push(new Career("Buspersons","This person is responsible to set and clears restaurant tables, stocks all service stations and assist food servers with table service to ensure total guest satisfaction.",7,'images/careers/foodrunners.jpg',[1]));
 		this.state=2;
 	};
 
@@ -139,6 +163,17 @@ function CareersApp(){
 				$("#careers-desc").append('<p>If you enjoy working in an upbeat environment and have the personality to match,you may be just who we’re looking for.</p>')
 				$("#careers-desc").find('img').css({"width":"300px","float": "left","padding":"10px"});
 				document.getElementById('apply-form').getElementsByTagName('select')[0].value=typeIn;
+
+				var locSelect=document.getElementById('apply-form').getElementsByTagName('select')[1];
+				locSelect.innerHTML='';
+				for (var i = 0; i < curChoise.locations.length; i++) 
+				{
+					var restaurant=$.grep(restaurants, function(e){ return e.id === curChoise.locations[i]; }).pop();
+					var opt = document.createElement('option');
+					opt.text = restaurant.name;
+					opt.value= restaurant.id;
+					locSelect.options.add(opt);
+				}
 				
 			});
 		//change info when changed career in application form
@@ -190,6 +225,7 @@ function CareersApp(){
 	this.clearAll=function(){
 		document.getElementById(this.applicationContainerId).innerHTML='';
 		careers=[];
+		restaurants=[];
 	};
 
 	//CREATING HTML ELEMENTS
@@ -294,8 +330,23 @@ function CareersApp(){
 		el.className="form-label";
 		el.innerHTML="Apply as:";
 		divEl.appendChild(el);
+
 	    el = document.createElement('select');
 	    el.name="user_job_title";
+		el.className="form-input";
+		divEl.appendChild(el);
+	    newForm.appendChild(divEl);
+
+	    divEl = document.createElement('div');
+		divEl.className="form-group";
+		el = document.createElement('label');
+		el.for='user_job_location';
+		el.className="form-label";
+		el.innerHTML="Location:";
+		divEl.appendChild(el);
+
+	    el = document.createElement('select');
+	    el.name="user_job_location";
 		el.className="form-input";
 		divEl.appendChild(el);
 	    newForm.appendChild(divEl);
